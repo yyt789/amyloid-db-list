@@ -79,7 +79,7 @@
 <header>
   <div class="container nav">
     <div class="brand"><div class="logo"></div><span>Database List</span></div>
-    <span class="pill">可搜索 · 可筛选 · 纯静态部署</span>
+    <span class="pill">Search and filter enabled</span>
   </div>
 </header>
 
@@ -94,20 +94,20 @@
   <section class="grid">
     <div class="card">
       <div class="controls">
-        <input id="q" placeholder="搜索：数据库名 / Focus / DOI / 数据来源 …（支持模糊匹配）" />
+        <input id="q" placeholder="Search: database name, focus, DOI, or data sources (fuzzy matching supported)" />
         <select id="focusFilter">
-          <option value="">Focus（全部）</option>
+          <option value="">Focus(All)</option>
         </select>
         <select id="typeFilter">
-          <option value="">Type（全部）</option>
+          <option value="">Type(All)</option>
           <option value="Experimental">Experimental</option>
           <option value="Predictions">Predictions</option>
           <option value="Experimental+Predictions">Experimental+Predictions</option>
         </select>
         <select id="statusFilter">
-          <option value="">Status（全部）</option>
+          <option value="">Status(All)</option>
         </select>
-        <button class="btn" id="reset">重置</button>
+        <button class="btn" id="reset">Reset</button>
       </div>
 
       <div class="tabs" id="tabs">
@@ -120,7 +120,7 @@
       <div class="meta">
         <span id="count">—</span>
         <span>·</span>
-        <span class="small">点击表头可排序（本地排序）</span>
+        <span class="small">Click table headers to sort locally.</span>
       </div>
     </div>
 
@@ -331,9 +331,10 @@
 
   main().catch(err=>{
     console.error(err);
-    el("tbody").innerHTML = `<tr><td colspan="11">加载 data.json 失败：${err}</td></tr>`;
+    el("tbody").innerHTML = `<tr><td colspan="11">Failed to load data.json：${err}</td></tr>`;
   });
 </script>
 </body>
 </html>
+
 
