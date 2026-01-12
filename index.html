@@ -1,0 +1,339 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Amyloid Database List</title>
+  <style>
+    :root{
+      --bg:#0b1220; --card:#111a2e; --text:#e8eefc; --muted:#a7b3d1;
+      --pri:#5b8cff; --bd:rgba(255,255,255,.10);
+      --ok:#38d39f; --warn:#ffcc66; --bad:#ff6b6b;
+    }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
+      background:radial-gradient(1200px 600px at 10% 10%,rgba(91,140,255,.25),transparent 60%),
+                 radial-gradient(900px 500px at 90% 0%,rgba(124,92,255,.20),transparent 55%),
+                 var(--bg);
+      color:var(--text); line-height:1.6;
+    }
+    a{color:inherit}
+    .container{max-width:1200px;margin:0 auto;padding:0 18px}
+    header{position:sticky;top:0;backdrop-filter: blur(10px);
+      background:rgba(11,18,32,.65); border-bottom:1px solid var(--bd); z-index:10;
+    }
+    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
+    .brand{display:flex;gap:10px;align-items:center;font-weight:800}
+    .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--pri),#7c5cff)}
+    .pill{display:inline-flex;align-items:center;gap:8px;
+      padding:6px 10px;border-radius:999px;border:1px solid var(--bd);
+      background:rgba(255,255,255,.03); color:var(--muted); font-size:13px;
+    }
+    .hero{padding:28px 0 10px}
+    h1{font-size:30px;margin:10px 0 8px}
+    p{color:var(--muted);margin:0}
+    .grid{display:grid;grid-template-columns: 1fr;gap:14px;margin:14px 0 22px}
+    .card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:16px;padding:14px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+    input,select{padding:10px 12px;border-radius:12px;border:1px solid var(--bd);
+      background:rgba(0,0,0,.16);color:var(--text);outline:none;
+    }
+    input{min-width:min(420px, 100%)}
+    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
+    .tab{cursor:pointer;padding:8px 12px;border-radius:999px;border:1px solid var(--bd);
+      background:rgba(255,255,255,.02); color:var(--muted); font-weight:700; font-size:13px;
+    }
+    .tab.active{background:rgba(91,140,255,.18);border-color:rgba(91,140,255,.35);color:#dbe7ff}
+    .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;color:var(--muted);font-size:13px}
+
+    /* table */
+    .table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--bd)}
+    table{width:100%;border-collapse:separate;border-spacing:0;min-width:1050px;background:rgba(0,0,0,.10)}
+    thead th{position:sticky;top:0;background:rgba(17,26,46,.96);backdrop-filter: blur(8px);
+      text-align:left;font-size:12px;color:#c9d6f7;padding:10px;border-bottom:1px solid var(--bd);
+      user-select:none; cursor:pointer;
+    }
+    tbody td{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top;font-size:13px;color:#e7edff}
+    tbody tr:hover{background:rgba(255,255,255,.03)}
+    .badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:12px;
+      border:1px solid var(--bd); background:rgba(255,255,255,.02); color:var(--muted);
+      white-space:nowrap;
+    }
+    .b-ok{border-color:rgba(56,211,159,.35);background:rgba(56,211,159,.12);color:#bff4df}
+    .b-warn{border-color:rgba(255,204,102,.35);background:rgba(255,204,102,.12);color:#ffe9b5}
+    .b-bad{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.12);color:#ffd0d0}
+
+    .small{font-size:12px;color:var(--muted)}
+    .btn{cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
+      padding:9px 12px;border-radius:12px;border:1px solid var(--bd);
+      background:rgba(255,255,255,.03);color:var(--text);font-weight:700;font-size:13px;
+    }
+    footer{padding:24px 0;color:var(--muted);border-top:1px solid var(--bd);margin-top:22px}
+    @media (max-width:640px){
+      h1{font-size:24px}
+      input{min-width:100%}
+    }
+  </style>
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <div class="brand"><div class="logo"></div><span>Database List</span></div>
+    <span class="pill">可搜索 · 可筛选 · 纯静态部署</span>
+  </div>
+</header>
+
+<main class="container">
+  <section class="hero">
+    <h1>Amyloid-related database list</h1>
+    <p>
+      这是一个“数据库目录页”模板：把每个数据库的链接、研究焦点、数据类型、状态、DOI 等信息放到表格中，
+      并提供搜索/筛选与更新记录（类似你给的示例页面）。:contentReference[oaicite:1]{index=1}
+    </p>
+  </section>
+
+  <section class="grid">
+    <div class="card">
+      <div class="controls">
+        <input id="q" placeholder="搜索：数据库名 / Focus / DOI / 数据来源 …（支持模糊匹配）" />
+        <select id="focusFilter">
+          <option value="">Focus（全部）</option>
+        </select>
+        <select id="typeFilter">
+          <option value="">Type（全部）</option>
+          <option value="Experimental">Experimental</option>
+          <option value="Predictions">Predictions</option>
+          <option value="Experimental+Predictions">Experimental+Predictions</option>
+        </select>
+        <select id="statusFilter">
+          <option value="">Status（全部）</option>
+        </select>
+        <button class="btn" id="reset">重置</button>
+      </div>
+
+      <div class="tabs" id="tabs">
+        <span class="tab active" data-tab="All">All</span>
+        <span class="tab" data-tab="Experimental">Experimental</span>
+        <span class="tab" data-tab="Predictions">Predictions</span>
+        <span class="tab" data-tab="Experimental+Predictions">Both</span>
+      </div>
+
+      <div class="meta">
+        <span id="count">—</span>
+        <span>·</span>
+        <span class="small">点击表头可排序（本地排序）</span>
+      </div>
+    </div>
+
+    <div class="card">
+      <b>Updates</b>
+      <div class="small" id="updates"></div>
+    </div>
+
+    <div class="table-wrap">
+      <table id="tbl">
+        <thead>
+          <tr>
+            <th data-key="name">Database</th>
+            <th data-key="focus">Focus</th>
+            <th data-key="type">Type of data</th>
+            <th data-key="only_amyloids">Only amyloids</th>
+            <th data-key="exp_conditions">Includes exp. conditions</th>
+            <th data-key="struct_info">Structural info</th>
+            <th data-key="aprs">Identifies APRs</th>
+            <th data-key="status">Status</th>
+            <th data-key="last_update">Published / last update</th>
+            <th data-key="sources">Data sources / links</th>
+            <th data-key="doi">DOI</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    © <span id="year"></span> · Static directory page template
+  </footer>
+</main>
+
+<script>
+  const state = {
+    all: [],
+    filtered: [],
+    sortKey: null,
+    sortDir: 1, // 1 asc, -1 desc
+    tab: "All",
+  };
+
+  const el = (id) => document.getElementById(id);
+
+  function badgeForStatus(status){
+    const s = (status || "").toLowerCase();
+    if (s.includes("active") || s.includes("functional")) return `<span class="badge b-ok">${status}</span>`;
+    if (s.includes("unstable") || s.includes("warning") || s.includes("non-active")) return `<span class="badge b-warn">${status}</span>`;
+    if (s.includes("non-functional") || s.includes("dead") || s.includes("offline")) return `<span class="badge b-bad">${status}</span>`;
+    return `<span class="badge">${status || "—"}</span>`;
+  }
+
+  function yesNoBadge(v){
+    if (v === true) return `<span class="badge b-ok">Yes</span>`;
+    if (v === false) return `<span class="badge b-bad">No</span>`;
+    return `<span class="badge">—</span>`;
+  }
+
+  function linkOrDash(text, url){
+    if (!text && !url) return "—";
+    const t = text || url;
+    if (!url) return t;
+    return `<a href="${url}" target="_blank" rel="noreferrer">${t}</a>`;
+  }
+
+  function render(){
+    const tbody = el("tbody");
+    tbody.innerHTML = state.filtered.map(row => `
+      <tr>
+        <td>${linkOrDash(row.name, row.url)}</td>
+        <td>${row.focus || "—"}</td>
+        <td><span class="badge">${row.type || "—"}</span></td>
+        <td>${yesNoBadge(row.only_amyloids)}</td>
+        <td>${yesNoBadge(row.exp_conditions)}</td>
+        <td>${yesNoBadge(row.struct_info)}</td>
+        <td>${yesNoBadge(row.aprs)}</td>
+        <td>${badgeForStatus(row.status)}</td>
+        <td>${row.last_update || "—"}</td>
+        <td>${row.sources || "—"}</td>
+        <td>${row.doi ? `<a href="${row.doi.startsWith("http")? row.doi : "https://doi.org/"+row.doi}" target="_blank" rel="noreferrer">${row.doi}</a>` : "—"}</td>
+      </tr>
+    `).join("");
+
+    el("count").textContent = `共 ${state.filtered.length} 条`;
+  }
+
+  function applyFilters(){
+    const q = (el("q").value || "").trim().toLowerCase();
+    const focus = el("focusFilter").value;
+    const type = el("typeFilter").value;
+    const status = el("statusFilter").value;
+
+    state.filtered = state.all.filter(r => {
+      // tab
+      if (state.tab !== "All" && (r.type || "") !== state.tab) return false;
+
+      // dropdown filters
+      if (focus && (r.focus || "") !== focus) return false;
+      if (type && (r.type || "") !== type) return false;
+      if (status && (r.status || "") !== status) return false;
+
+      // search
+      if (!q) return true;
+      const blob = [
+        r.name, r.focus, r.type, r.status, r.last_update, r.sources, r.doi, r.url
+      ].filter(Boolean).join(" ").toLowerCase();
+      return blob.includes(q);
+    });
+
+    // sort
+    if (state.sortKey){
+      const k = state.sortKey;
+      const dir = state.sortDir;
+      state.filtered.sort((a,b)=>{
+        const va = (a[k] ?? "").toString().toLowerCase();
+        const vb = (b[k] ?? "").toString().toLowerCase();
+        if (va < vb) return -1 * dir;
+        if (va > vb) return  1 * dir;
+        return 0;
+      });
+    }
+
+    render();
+  }
+
+  function populateFilters(){
+    const focusSet = new Set();
+    const statusSet = new Set();
+    state.all.forEach(r=>{
+      if (r.focus) focusSet.add(r.focus);
+      if (r.status) statusSet.add(r.status);
+    });
+
+    const focusSel = el("focusFilter");
+    [...focusSet].sort().forEach(v=>{
+      const opt = document.createElement("option");
+      opt.value = v; opt.textContent = v;
+      focusSel.appendChild(opt);
+    });
+
+    const statusSel = el("statusFilter");
+    [...statusSet].sort().forEach(v=>{
+      const opt = document.createElement("option");
+      opt.value = v; opt.textContent = v;
+      statusSel.appendChild(opt);
+    });
+  }
+
+  function hookUI(){
+    ["q","focusFilter","typeFilter","statusFilter"].forEach(id=>{
+      el(id).addEventListener("input", applyFilters);
+      el(id).addEventListener("change", applyFilters);
+    });
+
+    el("reset").onclick = ()=>{
+      el("q").value = "";
+      el("focusFilter").value = "";
+      el("typeFilter").value = "";
+      el("statusFilter").value = "";
+      state.tab = "All";
+      document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
+      document.querySelector('.tab[data-tab="All"]').classList.add("active");
+      state.sortKey = null; state.sortDir = 1;
+      applyFilters();
+    };
+
+    // tabs
+    document.querySelectorAll(".tab").forEach(t=>{
+      t.onclick = ()=>{
+        document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
+        t.classList.add("active");
+        state.tab = t.dataset.tab;
+        applyFilters();
+      };
+    });
+
+    // sorting
+    document.querySelectorAll("thead th").forEach(th=>{
+      th.onclick = ()=>{
+        const k = th.dataset.key;
+        if (!k) return;
+        if (state.sortKey === k) state.sortDir *= -1;
+        else { state.sortKey = k; state.sortDir = 1; }
+        applyFilters();
+      };
+    });
+  }
+
+  async function main(){
+    const res = await fetch("./data.json", {cache:"no-store"});
+    const data = await res.json();
+
+    state.all = data.items || [];
+    state.filtered = [...state.all];
+
+    // updates
+    const updates = (data.updates || []).map(u => `• ${u}`).join("<br/>");
+    el("updates").innerHTML = updates || "—";
+
+    populateFilters();
+    hookUI();
+    applyFilters();
+
+    el("year").textContent = new Date().getFullYear();
+  }
+
+  main().catch(err=>{
+    console.error(err);
+    el("tbody").innerHTML = `<tr><td colspan="11">加载 data.json 失败：${err}</td></tr>`;
+  });
+</script>
+</body>
+</html>
