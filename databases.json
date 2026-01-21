@@ -1,0 +1,156 @@
+[
+  {
+    "name": "AmyloBase",
+    "year": "2024-07-12",
+    "type": "Experimental",
+    "source": "PubMed; UniProt",
+    "url": "https://doi.org/10.1038/embor.2011.116"
+  },
+  {
+    "name": "Amyloid Atlas",
+    "year": "2024-05-22",
+    "type": "Experimental",
+    "source": "PDB; PubMed",
+    "url": "https://doi.org/10.1016/j.cell.2021.08.013"
+  },
+  {
+    "name": "Cross-Beta DB",
+    "year": "2024-05-01",
+    "type": "Experimental and prediction",
+    "source": "PDB; AmyPro; UniProt; PubMed",
+    "url": "https://doi.org/10.1101/2024.02.12.579644"
+  },
+  {
+    "name": "CPAD2",
+    "year": "2024-04-15",
+    "type": "Experimental",
+    "source": "CPAD; Waltz-DB 2.0; AmyLoad; AmyPro; UniProt; PDB; PubMed",
+    "url": "https://doi.org/10.1080/13506129.2020.1715363"
+  },
+  {
+    "name": "CARs DB",
+    "year": "2023-09-08",
+    "type": "Prediction",
+    "source": "DisProt; UniProt",
+    "url": "https://doi.org/10.3389/fmolb.2022.882160"
+  },
+  {
+    "name": "AmyPro",
+    "year": "2023-08-25",
+    "type": "Experimental",
+    "source": "PDB; UniProt; PubMed",
+    "url": "https://doi.org/10.1093/nar/gkx950"
+  },
+  {
+    "name": "AmyloGraph",
+    "year": "2023-06-08",
+    "type": "Experimental",
+    "source": "PubMed; UniProt",
+    "url": "https://doi.org/10.1093/nar/gkac882"
+  },
+  {
+    "name": "StAmP",
+    "year": "2022-03-09",
+    "type": "Experimental and prediction",
+    "source": "WALTZ-DB; AmyPro; CPAD; PDB; UniProt",
+    "url": "https://doi.org/10.1093/bioinformatics/btac126"
+  },
+  {
+    "name": "Waltz DB 2.0",
+    "year": "2020-01-08",
+    "type": "Experimental and prediction",
+    "source": "PubMed; UniProt; PDB",
+    "url": "https://doi.org/10.1093/nar/gkz758"
+  },
+  {
+    "name": "PrionScan",
+    "year": "2019-07-03",
+    "type": "Prediction",
+    "source": "UniProt; ENA; Protein; KEGG; Pfam; QuickGO",
+    "url": "https://doi.org/10.1186/1471-2164-15-102"
+  },
+  {
+    "name": "AmyLoad",
+    "year": "2015-06-17",
+    "type": "Experimental and prediction",
+    "source": "TANGO; WALTZ; AmylFrag; AGGRESCAN; AmylHex; PubMed",
+    "url": "https://doi.org/10.1093/bioinformatics/btv375"
+  },
+  {
+    "name": "Fibrilizer",
+    "year": "2013-02-05",
+    "type": "Prediction",
+    "source": "PDB",
+    "url": "https://doi.org/10.1016/j.bpj.2012.12.037"
+  },
+  {
+    "name": "ZipperDB",
+    "year": "2010-02-03",
+    "type": "Prediction",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1073/pnas.0915166107"
+  },
+  {
+    "name": "THERPA",
+    "year": "2019-10-25",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1080/19336896.2019.1689789"
+  },
+  {
+    "name": "AmyCo",
+    "year": "2019-05-16",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1080/13506129.2019.1603143"
+  },
+  {
+    "name": "amyloid interactome",
+    "year": "2017-03-01",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1371/journal.pone.0173163"
+  },
+  {
+    "name": "ProADD",
+    "year": "2014-06-30",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.6026/97320630010390"
+  },
+  {
+    "name": "pE-DB",
+    "year": "2014-01-01",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1093/nar/gkt960"
+  },
+  {
+    "name": "PrionHome",
+    "year": "2012-02-20",
+    "type": "Experimental and prediction",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1371/journal.pone.0031785"
+  },
+  {
+    "name": "Prion Disease Database",
+    "year": "2009-09-17",
+    "type": "Experimental",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1093/database/bap011"
+  },
+  {
+    "name": "fibril_one",
+    "year": "2009-04-13",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1110/ps.0204302"
+  },
+  {
+    "name": "AmyPDB",
+    "year": "2008-06-10",
+    "type": "",
+    "source": "Academic Research",
+    "url": "https://doi.org/10.1186/1471-2105-9-273"
+  }
+]
