@@ -1,0 +1,52 @@
+[
+  {
+    "year": "2025",
+    "method": "RibbonFold",
+    "dataset_used": "Multi-source Data",
+    "model_algorithm": "Deep Learning, Structural Constraints",
+    "tool_url": "https://www.cpl.ac.cn/news/4028c1f19640302f0196418b2b960004.html",
+    "github_url": "#",
+    "reference_name": "PNAS",
+    "reference_url": "https://www.cpl.ac.cn/news/4028c1f19640302f0196418b2b960004.html"
+  },
+  {
+    "year": "2025",
+    "method": "Memory Guardian AI System",
+    "dataset_used": "Clinical Data, MRI, Genomic Data",
+    "model_algorithm": "Deep Learning, Multimodal Fusion",
+    "tool_url": "https://www.iesdouyin.com/share/video/7536185679005420838",
+    "github_url": "#",
+    "reference_name": "Xuanwu Hospital",
+    "reference_url": "https://www.iesdouyin.com/share/video/7536185679005420838"
+  },
+  {
+    "year": "2024",
+    "method": "Cross-Beta RF",
+    "dataset_used": "Cross-Beta DB",
+    "model_algorithm": "Random Forest",
+    "tool_url": "http://www.shturl.cc/6cab93cd0359698f0c2aaf03f81ba5a0",
+    "github_url": "#",
+    "reference_name": "bioRxiv",
+    "reference_url": "http://www.shturl.cc/6cab93cd0359698f0c2aaf03f81ba5a0"
+  },
+  {
+    "year": "2023",
+    "method": "AmyloGram",
+    "dataset_used": "UniProt",
+    "model_algorithm": "n-gram, Random Forest",
+    "tool_url": "https://m.ebiotrade.com/newsf/2025-11/20251121090331257.htm",
+    "github_url": "#",
+    "reference_name": "BioeTrade",
+    "reference_url": "https://m.ebiotrade.com/newsf/2025-11/20251121090331257.htm"
+  },
+  {
+    "year": "2013",
+    "method": "AmylPepPred",
+    "dataset_used": "Multi-source Data",
+    "model_algorithm": "Machine Learning",
+    "tool_url": "http://www.zoommicro.in/amylpeppred",
+    "github_url": "#",
+    "reference_name": "PubMed",
+    "reference_url": "https://pubmed.ncbi.nlm.nih.gov/23275694/"
+  }
+]
