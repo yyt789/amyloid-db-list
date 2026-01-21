@@ -1,346 +1,1311 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="zh-CN">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Amyloid Database List</title>
-  <style>
-    :root{
-      --bg:#0b1220; --card:#111a2e; --text:#e8eefc; --muted:#a7b3d1;
-      --pri:#5b8cff; --bd:rgba(255,255,255,.10);
-      --ok:#38d39f; --warn:#ffcc66; --bad:#ff6b6b;
-    }
-    *{box-sizing:border-box}
-    body{margin:0;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,Helvetica,Arial;
-      background:radial-gradient(1200px 600px at 10% 10%,rgba(91,140,255,.25),transparent 60%),
-                 radial-gradient(900px 500px at 90% 0%,rgba(124,92,255,.20),transparent 55%),
-                 var(--bg);
-      color:var(--text); line-height:1.6;
-    }
-    a{color:inherit}
-    .container{max-width:1200px;margin:0 auto;padding:0 18px}
-    header{position:sticky;top:0;backdrop-filter: blur(10px);
-      background:rgba(11,18,32,.65); border-bottom:1px solid var(--bd); z-index:10;
-    }
-    .nav{display:flex;align-items:center;justify-content:space-between;height:64px}
-    .brand{display:flex;gap:10px;align-items:center;font-weight:800}
-    .logo{width:28px;height:28px;border-radius:8px;background:linear-gradient(135deg,var(--pri),#7c5cff)}
-    .pill{display:inline-flex;align-items:center;gap:8px;
-      padding:6px 10px;border-radius:999px;border:1px solid var(--bd);
-      background:rgba(255,255,255,.03); color:var(--muted); font-size:13px;
-    }
-    .hero{padding:28px 0 10px}
-    h1{font-size:30px;margin:10px 0 8px}
-    p{color:var(--muted);margin:0}
-    .grid{display:grid;grid-template-columns: 1fr;gap:14px;margin:14px 0 22px}
-    .card{background:rgba(255,255,255,.03);border:1px solid var(--bd);border-radius:16px;padding:14px}
-    .controls{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-    input,select{padding:10px 12px;border-radius:12px;border:1px solid var(--bd);
-      background:rgba(0,0,0,.16);color:var(--text);outline:none;
-    }
-    input{min-width:min(420px, 100%)}
-    .tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}
-    .tab{cursor:pointer;padding:8px 12px;border-radius:999px;border:1px solid var(--bd);
-      background:rgba(255,255,255,.02); color:var(--muted); font-weight:700; font-size:13px;
-    }
-    .tab.active{background:rgba(91,140,255,.18);border-color:rgba(91,140,255,.35);color:#dbe7ff}
-    .meta{display:flex;gap:10px;flex-wrap:wrap;align-items:center;margin-top:10px;color:var(--muted);font-size:13px}
-
-    /* table */
-    .table-wrap{overflow:auto;border-radius:16px;border:1px solid var(--bd)}
-    table{width:100%;border-collapse:separate;border-spacing:0;min-width:1050px;background:rgba(0,0,0,.10)}
-    thead th{position:sticky;top:0;background:rgba(17,26,46,.96);backdrop-filter: blur(8px);
-      text-align:left;font-size:12px;color:#c9d6f7;padding:10px;border-bottom:1px solid var(--bd);
-      user-select:none; cursor:pointer;
-    }
-    tbody td{padding:10px;border-bottom:1px solid rgba(255,255,255,.06);vertical-align:top;font-size:13px;color:#e7edff}
-    tbody tr:hover{background:rgba(255,255,255,.03)}
-    .badge{display:inline-flex;align-items:center;padding:4px 8px;border-radius:999px;font-size:12px;
-      border:1px solid var(--bd); background:rgba(255,255,255,.02); color:var(--muted);
-      white-space:nowrap;
-    }
-    .b-ok{border-color:rgba(56,211,159,.35);background:rgba(56,211,159,.12);color:#bff4df}
-    .b-warn{border-color:rgba(255,204,102,.35);background:rgba(255,204,102,.12);color:#ffe9b5}
-    .b-bad{border-color:rgba(255,107,107,.35);background:rgba(255,107,107,.12);color:#ffd0d0}
-
-    .small{font-size:12px;color:var(--muted)}
-    .btn{cursor:pointer;display:inline-flex;align-items:center;justify-content:center;
-      padding:9px 12px;border-radius:12px;border:1px solid var(--bd);
-      background:rgba(255,255,255,.03);color:var(--text);font-weight:700;font-size:13px;
-    }
-    footer{padding:24px 0;color:var(--muted);border-top:1px solid var(--bd);margin-top:22px}
-    @media (max-width:640px){
-      h1{font-size:24px}
-      input{min-width:100%}
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Review of Computational Models for Amyloid Protein Prediction</title>
+    <!-- Tailwind CSS v3 -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.8/dist/chart.umd.min.js"></script>
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind Configuration -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#1a56db',
+                        secondary: '#e5edff',
+                        accent: '#0694a2',
+                        dark: '#2d3748',
+                        light: '#f8fafc'
+                    },
+                    fontFamily: {
+                        sans: ['Inter', 'system-ui', 'sans-serif'],
+                        heading: ['Poppins', 'sans-serif']
+                    },
+                    boxShadow: {
+                        'card': '0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06)',
+                        'card-hover': '0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05)',
+                        'glass': '0 8px 32px 0 rgba(31, 38, 135, 0.37)',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.5s ease-in-out',
+                        'slide-up': 'slideUp 0.5s ease-in-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        slideUp: {
+                            '0%': { transform: 'translateY(20px)', opacity: '0' },
+                            '100%': { transform: 'translateY(0)', opacity: '1' },
+                        }
+                    },
+                    backgroundImage: {
+                        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+                    }
+                }
+            }
+        }
+    </script>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .text-shadow {
+                text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            }
+            .text-shadow-lg {
+                text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+            }
+            .transition-all-300 {
+                transition: all 300ms ease-in-out;
+            }
+            .bg-gradient-blue {
+                background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+            }
+            .bg-gradient-light {
+                background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            }
+            .bg-glass {
+                background: rgba(255, 255, 255, 0.25);
+                backdrop-filter: blur(4px);
+                -webkit-backdrop-filter: blur(4px);
+                border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+            .scrollbar-hide::-webkit-scrollbar {
+                display: none;
+            }
+            .scrollbar-hide {
+                -ms-overflow-style: none;
+                scrollbar-width: none;
+            }
+        }
+    </style>
 </head>
-<body>
-<header>
-  <div class="container nav">
-    <div class="brand"><div class="logo"></div><span>Database List</span></div>
-    <span class="pill">Search and filter enabled</span>
-  </div>
-</header>
+<body class="bg-gray-50 text-gray-800 font-sans">
+    <!-- Header Navigation -->
+    <header class="sticky top-0 z-50 bg-white shadow-md">
+        <nav class="container mx-auto px-4 py-3 flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/999810679480516645~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=uvNsstxdXU150ImWQXgw1%2FflupU%3D" alt="Logo" class="h-10 w-10 rounded-full object-cover">
+                <span class="text-xl font-bold text-primary font-heading">Amyloid Protein Prediction</span>
+            </div>
+            <div class="hidden md:flex space-x-6">
+                <a href="#home" class="text-primary font-medium hover:text-primary-dark transition-all-300">Home</a>
+                <a href="#database" class="text-gray-600 hover:text-primary transition-all-300">Database</a>
+                <a href="#methods" class="text-gray-600 hover:text-primary transition-all-300">Methods</a>
+                <a href="#tools" class="text-gray-600 hover:text-primary transition-all-300">Tools</a>
+                <a href="#contact" class="text-gray-600 hover:text-primary transition-all-300">Contact</a>
+            </div>
+            <div class="md:hidden">
+                <button id="mobile-menu-button" class="text-gray-500 hover:text-primary focus:outline-none">
+                    <i class="fa fa-bars text-xl"></i>
+                </button>
+            </div>
+        </nav>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg absolute w-full animate-fade-in">
+            <div class="container mx-auto px-4 py-2 flex flex-col space-y-3">
+                <a href="#home" class="text-primary font-medium py-2 border-b border-gray-100">Home</a>
+                <a href="#database" class="text-gray-600 py-2 border-b border-gray-100">Database</a>
+                <a href="#methods" class="text-gray-600 py-2 border-b border-gray-100">Methods</a>
+                <a href="#tools" class="text-gray-600 py-2 border-b border-gray-100">Tools</a>
+                <a href="#contact" class="text-gray-600 py-2">Contact</a>
+            </div>
+        </div>
+    </header>
 
-<main class="container">
-  <section class="hero">
-    <h1>Amyloid-related database list</h1>
-    <p>
-      Each entry provides links to the data, research focus, data type, status, DOI, and related information, along with search and filtering capabilities and a record of updates.
-    </p>
-  </section>
+    <!-- Hero Section -->
+    <section id="home" class="bg-gradient-blue text-white py-16 md:py-24 relative overflow-hidden">
+        <!-- Decorative Elements -->
+        <div class="absolute top-0 left-0 w-full h-full">
+            <div class="absolute top-10 left-10 w-20 h-20 bg-white opacity-10 rounded-full"></div>
+            <div class="absolute bottom-10 right-10 w-32 h-32 bg-white opacity-10 rounded-full"></div>
+            <div class="absolute top-1/2 left-1/4 w-16 h-16 bg-white opacity-5 rounded-full"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 flex flex-col md:flex-row items-center relative z-10">
+            <div class="md:w-1/2 mb-8 md:mb-0 animate-slide-up">
+                <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-4 text-shadow-lg font-heading">A Review of Computational Models for Amyloid Protein Prediction</h1>
+                <p class="text-xl mb-6 text-blue-100 max-w-lg">An integrated information platform for researchers in the field of computational amyloid protein modeling, enabling rapid access to current research progress, methodologies, tools, and resources.</p>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#database" class="bg-white text-primary font-medium px-6 py-3 rounded-lg hover:bg-gray-100 transition-all-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1">
+                        Explore Databases
+                    </a>
+                    <a href="#methods" class="bg-transparent border-2 border-white text-white font-medium px-6 py-3 rounded-lg hover:bg-white hover:text-primary transition-all-300 transform hover:-translate-y-1">
+                        Methods
+                    </a>
+                </div>
+            </div>
+            <div class="md:w-1/2 flex justify-center animate-fade-in">
+                <div class="relative">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-blue-400 to-purple-500 rounded-lg blur-lg opacity-75"></div>
+                    <img src="https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/903094381016121417~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=eJVXliYpv7UDcgiDWWUo50rcmE4%3D" alt="Amyloid Protein Structure" class="w-full max-w-md rounded-lg shadow-2xl transform hover:scale-105 transition-all-300 relative z-10">
+                </div>
+            </div>
+        </div>
+    </section>
 
-  <section class="grid">
-    <div class="card">
-      <div class="controls">
-        <input id="q" placeholder="Search: database name, focus, DOI, or data sources (fuzzy matching supported)" />
-        <select id="focusFilter">
-          <option value="">Focus(All)</option>
-        </select>
-        <select id="typeFilter">
-          <option value="">Type(All)</option>
-          <option value="Experimental">Experimental</option>
-          <option value="Predictions">Predictions</option>
-          <option value="Experimental+Predictions">Experimental+Predictions</option>
-        </select>
-        <select id="statusFilter">
-          <option value="">Status(All)</option>
-        </select>
-        <button class="btn" id="reset">Reset</button>
-      </div>
-
-      <div class="tabs" id="tabs">
-        <span class="tab active" data-tab="All">All</span>
-        <span class="tab" data-tab="Experimental">Experimental</span>
-        <span class="tab" data-tab="Predictions">Predictions</span>
-        <span class="tab" data-tab="Experimental+Predictions">Both</span>
-      </div>
-
-      <div class="meta">
-        <span id="count">—</span>
-        <span>·</span>
-        <span class="small">Click table headers to sort locally.</span>
-      </div>
+    <!-- Update Notification -->
+    <div class="bg-glass py-3 px-6 shadow-md">
+        <div class="container mx-auto flex items-center justify-between">
+            <div class="flex items-center">
+                <div class="w-8 h-8 bg-primary rounded-full flex items-center justify-center mr-3">
+                    <i class="fa fa-bell text-white"></i>
+                </div>
+                <p class="text-gray-800 font-medium">Latest Updates：<span class="text-primary">We have recently added detailed information on the latest RibbonFold method and the AmyloGram tool, along with relevant research papers published in 2025.</span></p>
+            </div>
+            <button id="close-update" class="text-gray-500 hover:text-gray-700 focus:outline-none">
+                <i class="fa fa-times"></i>
+            </button>
+        </div>
     </div>
 
-    <div class="card">
-      <b>Updates</b>
-      <div class="small" id="updates"></div>
+    <!-- Overview Section -->
+    <section class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-heading">Field Overview</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">The misfolding and aggregation of amyloid proteins are strongly implicated in a range of neurodegenerative disorders, including Alzheimer’s disease and Parkinson’s disease. Computational models have become increasingly important for predicting and elucidating these processes.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white rounded-xl shadow-card p-6 hover:shadow-card-hover transition-all-300 border border-gray-100 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-blue-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-flask text-primary text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 font-heading">Research Background</h3>
+                    <p class="text-gray-600">Amyloid proteins are closely associated with various neurodegenerative diseases, such as Alzheimer’s disease and Parkinson’s disease. Understanding their formation mechanisms is of great significance for disease diagnosis, prevention, and treatment.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-card p-6 hover:shadow-card-hover transition-all-300 border border-gray-100 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-green-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-cogs text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 font-heading">Computational Models</h3>
+                    <p class="text-gray-600">With the advancement of artificial intelligence and machine learning, computational models are playing an increasingly important role in predicting amyloid protein formation, providing new perspectives and tools for research.</p>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-card p-6 hover:shadow-card-hover transition-all-300 border border-gray-100 transform hover:-translate-y-2">
+                    <div class="w-14 h-14 bg-purple-100 rounded-full flex items-center justify-center mb-4">
+                        <i class="fa fa-database text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-semibold mb-3 font-heading">Data Resources</h3>
+                    <p class="text-gray-600">This platform integrates existing amyloid protein databases, prediction tools, and research methods, providing researchers with a one-stop hub for accessing comprehensive resources.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Data Dashboard Section -->
+    <section class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-heading">Research Data Statistics</h2>
+                <p class="text-gray-600 max-w-3xl mx-auto text-lg">Trends in the number of published papers and research focuses in the field of amyloid protein prediction models over time.</p>
+            </div>
+            
+            <div class="bg-white rounded-xl shadow-card p-6 mb-8 transform transition-all-300 hover:shadow-lg">
+                <h3 class="text-xl font-semibold mb-4 font-heading">Publication Year Distribution</h3>
+                <div class="h-80">
+                    <canvas id="yearChart"></canvas>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="bg-white rounded-xl shadow-card p-6 transform transition-all-300 hover:shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 font-heading">Distribution of Method Types</h3>
+                    <div class="h-80">
+                        <canvas id="methodChart"></canvas>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-xl shadow-card p-6 transform transition-all-300 hover:shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 font-heading">Distribution of Application Domains</h3>
+                    <div class="h-80">
+                        <canvas id="applicationChart"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Database Section -->
+    <section id="database" class="py-16 bg-gray-50">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-heading">Amyloid Protein Databases</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto text-lg">A curated collection of known amyloid protein data with
+                support for fuzzy search</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-card p-6 overflow-x-auto transform transition-all-300 hover:shadow-lg">
+            <div class="flex justify-between items-center mb-4 flex-wrap gap-4">
+                <div class="relative">
+                    <input type="text" id="database-search" placeholder="Search dataset name, type, or source..."
+                           class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full md:w-64">
+                    <i class="fa fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <div class="flex space-x-2 flex-wrap gap-2">
+                    <select id="database-filter"
+                            class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="all">All Types</option>
+                        <option value="Experimental">Experimental</option>
+                        <option value="Prediction">Prediction</option>
+                        <option value="Experimental and prediction">Experimental and prediction</option>
+                        <option value="Integrated">Integrated</option>
+
+                    </select>
+                    <button id="database-download"
+                            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-all-300 flex items-center shadow hover:shadow-md">
+                        <i class="fa fa-download mr-2"></i> Download Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto scrollbar-hide">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortTable(0)">
+                            Dataset Name <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortTable(1)">
+                            Published/Updated <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortTable(2)">
+                            Data Type <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortTable(3)">
+                            Data Source <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Link
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="database-table-body" class="bg-white divide-y divide-gray-200">
+</tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center mt-6">
+                <div class="text-sm text-gray-500">
+                    Showing <span id="database-start">1</span> to <span id="database-end">5</span> entries, total <span
+                        id="database-total">5</span> records
+                </div>
+                <div class="flex space-x-2">
+                    <button id="database-prev"
+                            class="px-3 py-1 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                        Previous
+                    </button>
+                    <button id="database-next"
+                            class="px-3 py-1 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
+</section>
 
-    <div class="table-wrap">
-      <table id="tbl">
-        <thead>
-          <tr>
-            <th data-key="name">Database</th>
-            <th data-key="focus">Focus</th>
-            <th data-key="type">Type of data</th>
-            <th data-key="only_amyloids">Only amyloids</th>
-            <th data-key="exp_conditions">Includes exp. conditions</th>
-            <th data-key="struct_info">Structural info</th>
-            <th data-key="aprs">Identifies APRs</th>
-            <th data-key="status">Status</th>
-            <th data-key="last_update">Published / last update</th>
-            <th data-key="sources">Data sources / links</th>
-            <th data-key="doi">DOI</th>
-          </tr>
-        </thead>
-        <tbody id="tbody"></tbody>
-      </table>
+    <!-- Methods Section -->
+    <section id="methods" class="py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4 font-heading">Methods and Models</h2>
+            <p class="text-gray-600 max-w-3xl mx-auto text-lg">A curated summary of methods, models, and related
+                resources for amyloid protein prediction</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-card p-6 overflow-x-auto transform transition-all-300 hover:shadow-lg">
+            <div class="flex justify-between items-center mb-4 flex-wrap gap-4">
+                <div class="relative">
+                    <input type="text" id="methods-search" placeholder="Search methods or models..."
+                           class="pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent w-full md:w-64">
+                    <i class="fa fa-search absolute left-3 top-3 text-gray-400"></i>
+                </div>
+                <div class="flex space-x-2 flex-wrap gap-2">
+                    <select id="methods-filter"
+                            class="border border-gray-300 rounded-lg px-3 py-2 focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent">
+                        <option value="all">All Years</option>
+                        <option value="2025">2025</option>
+                        <option value="2024">2024</option>
+                        <option value="2023">2023</option>
+                        <option value="2022">2022</option>
+                        <option value="2021">2021</option>
+                        <option value="2020">2020</option>
+                        <option value="2019 and Earlier">2019 and Earlier</option>
+                    </select>
+                    <button id="methods-download"
+                            class="bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary-dark transition-all-300 flex items-center shadow hover:shadow-md">
+                        <i class="fa fa-download mr-2"></i> Download Data
+                    </button>
+                </div>
+            </div>
+
+            <div class="overflow-x-auto scrollbar-hide">
+                <table class="min-w-full divide-y divide-gray-200">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortMethodsTable(0)">
+                            Year <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortMethodsTable(1)">
+                            Method <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortMethodsTable(2)">
+                            Database Used <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider cursor-pointer hover:bg-gray-100 transition-colors"
+                            onclick="sortMethodsTable(3)">
+                            Model/Algorithm <i class="fa fa-sort ml-1"></i>
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Tool Link
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            GitHub
+                        </th>
+                        <th scope="col"
+                            class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                            Reference
+                        </th>
+                    </tr>
+                    </thead>
+                    <tbody id="methods-table-body" class="bg-white divide-y divide-gray-200">
+</tbody>
+                </table>
+            </div>
+
+            <div class="flex justify-between items-center mt-6">
+                <div class="text-sm text-gray-500">
+                    Showing <span id="methods-start">1</span> to <span id="methods-end">5</span> entries, total <span
+                        id="methods-total">5</span> records
+                </div>
+                <div class="flex space-x-2">
+                    <button id="methods-prev"
+                            class="px-3 py-1 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                        Previous
+                    </button>
+                    <button id="methods-next"
+                            class="px-3 py-1 border border-gray-300 rounded-lg text-gray-600 hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </section>
+</section>
 
- <footer>
-  © <span id="year"></span> · This website is intended for academic and research purposes only.<br>
-  It does not redistribute original datasets.<br>
-  All database content, data records, and associated materials remain the property of their respective authors and publishers.<br>
-  Users are encouraged to cite the original databases and publications when using the data.
- </footer>
-</main>
+    <!-- Tools Section -->
+    <section id="tools" class="py-12 md:py-16 bg-white">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-2 text-center">Tools and Resources</h2>
+        <p class="text-gray-600 text-center mb-8">Provides practical tools and learning materials for amyloid
+            research</p>
 
-<script>
-  const state = {
-    all: [],
-    filtered: [],
-    sortKey: null,
-    sortDir: 1, // 1 asc, -1 desc
-    tab: "All",
-  };
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Tool Card 1 -->
+            <div class="bg-light rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all-300">
+                <div class="h-48 bg-gray-200 flex items-center justify-center">
+                    <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/999810679480516645~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=uvNsstxdXU150ImWQXgw1%2FflupU%3D"
+                         alt="RibbonFold" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">RibbonFold</h3>
+                    <p class="text-gray-700 mb-4">A deep learning–based tool for predicting polymorphic amyloid
+                        structures; it introduces the "ribbon conformation hypothesis" and applies structural
+                        constraints to predict conformational polymorphism in multiple amyloids.</p>
+                    <a href="https://www.cpl.ac.cn/news/4028c1f19640302f0196418b2b960004.html" target="_blank"
+                       class="text-primary hover:underline flex items-center">
+                        Learn More <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
 
-  const el = (id) => document.getElementById(id);
+            <!-- Tool Card 2 -->
+            <div class="bg-light rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all-300">
+                <div class="h-48 bg-gray-200 flex items-center justify-center">
+                    <img src="https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/920246032264069278~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=lAdgM1RdgKRyAqRMVm4Vz02eRQM%3D"
+                         alt="AmyloGram" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">AmyloGram</h3>
+                    <p class="text-gray-700 mb-4">A computational tool based on n-gram sequence encoding and a random
+                        forest classifier that analyzes protein sequences and predicts their likelihood of forming
+                        amyloids.</p>
+                    <a href="https://m.ebiotrade.com/newsf/2025-11/20251121090331257.htm" target="_blank"
+                       class="text-primary hover:underline flex items-center">
+                        Learn More <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
 
-  function badgeForStatus(status){
-    const s = (status || "").toLowerCase();
-    if (s.includes("active") || s.includes("functional")) return `<span class="badge b-ok">${status}</span>`;
-    if (s.includes("unstable") || s.includes("warning") || s.includes("non-active")) return `<span class="badge b-warn">${status}</span>`;
-    if (s.includes("non-functional") || s.includes("dead") || s.includes("offline")) return `<span class="badge b-bad">${status}</span>`;
-    return `<span class="badge">${status || "—"}</span>`;
-  }
+            <!-- Tool Card 3 -->
+            <div class="bg-light rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all-300">
+                <div class="h-48 bg-gray-200 flex items-center justify-center">
+                    <img src="https://p3-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/1007467884625526794~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=5NJ6%2BGaJ%2FKYtJKUieM1xAD5yzlc%3D"
+                         alt="AmylPepPred" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">AmylPepPred</h3>
+                    <p class="text-gray-700 mb-4">A machine learning model based on biophysical/biochemical properties
+                        and autocorrelation of amino acid indices to predict amyloid fibril–forming protein
+                        fragments.</p>
+                    <a href="http://www.zoommicro.in/amylpeppred" target="_blank"
+                       class="text-primary hover:underline flex items-center">
+                        Learn More <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
 
-  function yesNoBadge(v){
-    if (v === true) return `<span class="badge b-ok">Yes</span>`;
-    if (v === false) return `<span class="badge b-bad">No</span>`;
-    return `<span class="badge">—</span>`;
-  }
+            <!-- Tool Card 4 -->
+            <div class="bg-light rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all-300">
+                <div class="h-48 bg-gray-200 flex items-center justify-center">
+                    <img src="https://p11-doubao-search-sign.byteimg.com/tos-cn-i-be4g95zd3a/2046629509502468105~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=lfvTHbD4%2FZCuZ9ic8aY6ncHXWWQ%3D"
+                         alt="Memory Guardian AI System" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Memory Guardian AI System</h3>
+                    <p class="text-gray-700 mb-4">By analyzing adolescent brain MR images, cognitive test data, and
+                        genomic information, it can predict Alzheimer’s disease risk up to 15 years in advance, with
+                        reported accuracy of 89%.</p>
+                    <a href="https://www.iesdouyin.com/share/video/7536185679480516645~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=uvNsstxdXU150ImWQXgw1%2FflupU%3D"
+                       target="_blank" class="text-primary hover:underline flex items-center">
+                        Learn More <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
 
-  function linkOrDash(text, url){
-    if (!text && !url) return "—";
-    const t = text || url;
-    if (!url) return t;
-    return `<a href="${url}" target="_blank" rel="noreferrer">${t}</a>`;
-  }
+            <!-- Tool Card 5 -->
+            <div class="bg-light rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all-300">
+                <div class="h-48 bg-gray-200 flex items-center justify-center">
+                    <img src="https://p11-doubao-search-sign.byteimg.com/labis/cdb9b52985fc6a4115bf81aaf7cbbe03~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=4v1pJM8GtTq0kioSuuTqgCSiW2A%3D"
+                         alt="Cross-Beta RF" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">Cross-Beta RF</h3>
+                    <p class="text-gray-700 mb-4">A random forest–based predictor trained and benchmarked on Cross-Beta
+                        DB, showing competitive performance for predicting naturally occurring amyloids compared with
+                        existing methods.</p>
+                    <a href="http://www.shturl.cc/6cab93cd0359698f0c2aaf03f81ba5a0" target="_blank"
+                       class="text-primary hover:underline flex items-center">
+                        Learn More <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
 
-  function render(){
-    const tbody = el("tbody");
-    tbody.innerHTML = state.filtered.map(row => `
-      <tr>
-        <td>${linkOrDash(row.name, row.url)}</td>
-        <td>${row.focus || "—"}</td>
-        <td><span class="badge">${row.type || "—"}</span></td>
-        <td>${yesNoBadge(row.only_amyloids)}</td>
-        <td>${yesNoBadge(row.exp_conditions)}</td>
-        <td>${yesNoBadge(row.struct_info)}</td>
-        <td>${yesNoBadge(row.aprs)}</td>
-        <td>${badgeForStatus(row.status)}</td>
-        <td>${row.last_update || "—"}</td>
-        <td>${row.sources || "—"}</td>
-        <td>${row.doi ? `<a href="${row.doi.startsWith("http")? row.doi : "https://doi.org/"+row.doi}" target="_blank" rel="noreferrer">${row.doi}</a>` : "—"}</td>
-      </tr>
-    `).join("");
+            <!-- Tool Card 6 -->
+            <div class="bg-light rounded-lg overflow-hidden shadow-card hover:shadow-card-hover transition-all-300">
+                <div class="h-48 bg-gray-200 flex items-center justify-center">
+                    <img src="https://p11-doubao-search-sign.byteimg.com/labis/7b12cdc61b57ec700f5cc32fcaeaa75b~tplv-be4g95zd3a-image.jpeg?lk3s=feb11e32&x-expires=1784477274&x-signature=GUQ69mgjnx1qn3sKoSoJaYoGZus%3D"
+                         alt="AmyLoad" class="max-h-full max-w-full object-contain">
+                </div>
+                <div class="p-6">
+                    <h3 class="text-xl font-bold mb-2">AmyLoad</h3>
+                    <p class="text-gray-700 mb-4">A website that collects amyloid protein sequences from major sources,
+                        allows fragment filtering, and provides detailed information for each fragment; registered users
+                        can personalize their workspace and submit their own sequences.</p>
+                    <a href="http://comprec-lin.iiar.pwr.edu.pl/amyload/" target="_blank"
+                       class="text-primary hover:underline flex items-center">
+                        Learn More <i class="fa fa-arrow-right ml-2"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
 
-    el("count").textContent = `Total ${state.filtered.length} entries`;
-  }
+    <!-- Contact Section -->
+    <section id="contact" class="py-12 md:py-16 bg-light">
+    <div class="container mx-auto px-4">
+        <h2 class="text-3xl font-bold mb-2 text-center">Contact Us</h2>
+        <p class="text-gray-600 text-center mb-8">If you have questions, suggestions, or collaboration inquiries, please
+            feel free to contact us.</p>
 
-  function applyFilters(){
-    const q = (el("q").value || "").trim().toLowerCase();
-    const focus = el("focusFilter").value;
-    const type = el("typeFilter").value;
-    const status = el("statusFilter").value;
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+            <div class="bg-white rounded-lg p-6 shadow-card">
+                <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <div class="text-primary text-xl mt-1 mr-4">
+                            <i class="fa fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Email</h4>
+                            <p class="text-gray-700">amyloid-prediction@example.com</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-primary text-xl mt-1 mr-4">
+                            <i class="fa fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Phone</h4>
+                            <p class="text-gray-700">+86 123 4567 8910</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-primary text-xl mt-1 mr-4">
+                            <i class="fa fa-map-marker"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">Address</h4>
+                            <p class="text-gray-700">No. 30 Xueyuan Road, Haidian District, Beijing, China</p>
+                        </div>
+                    </div>
+                    <div class="flex items-start">
+                        <div class="text-primary text-xl mt-1 mr-4">
+                            <i class="fa fa-weixin"></i>
+                        </div>
+                        <div>
+                            <h4 class="font-bold">WeChat Official Account</h4>
+                            <p class="text-gray-700">Amyloid Research</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    state.filtered = state.all.filter(r => {
-      // tab
-      if (state.tab !== "All" && (r.type || "") !== state.tab) return false;
+            <div class="bg-white rounded-lg p-6 shadow-card">
+                <h3 class="text-xl font-bold mb-4">Message</h3>
+                <form id="contact-form">
+                    <div class="mb-4">
+                        <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+                        <input type="text" id="name"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                               placeholder="Enter your name">
+                    </div>
+                    <div class="mb-4">
+                        <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                        <input type="email" id="email"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                               placeholder="Enter your email">
+                    </div>
+                    <div class="mb-4">
+                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+                        <input type="text" id="subject"
+                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                               placeholder="Enter a subject">
+                    </div>
+                    <div class="mb-4">
+                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+                        <textarea id="message" rows="4"
+                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                                  placeholder="Enter your message"></textarea>
+                    </div>
+                    <button type="submit"
+                            class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-secondary transition-all-300">
+                        Submit Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
 
-      // dropdown filters
-      if (focus && (r.focus || "") !== focus) return false;
-      if (type && (r.type || "") !== type) return false;
-      if (status && (r.status || "") !== status) return false;
+    <!-- Footer -->
+    <footer class="bg-primary text-white py-8">
+    <div class="container mx-auto px-4">
+        <div class="flex flex-col md:flex-row justify-between">
+            <div class="mb-6 md:mb-0">
+                <div class="flex items-center space-x-2 mb-4">
+                    <i class="fa fa-dna text-2xl"></i>
+                    <span class="text-xl font-bold">Amyloid Protein Prediction</span>
+                </div>
+                <p class="text-gray-300 max-w-md">An integrated information platform for researchers in computational
+                    amyloid protein modeling, enabling rapid access to current research progress, methods, tools, and
+                    resources.</p>
+            </div>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Quick Links</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#home" class="text-gray-300 hover:text-white transition-all-300">Home</a></li>
+                        <li><a href="#database" class="text-gray-300 hover:text-white transition-all-300">Database</a>
+                        </li>
+                        <li><a href="#methods" class="text-gray-300 hover:text-white transition-all-300">Methods and
+                            Models</a></li>
+                        <li><a href="#tools" class="text-gray-300 hover:text-white transition-all-300">Tools</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition-all-300">Contact Us</a>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Related Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="https://www.cpl.ac.cn/news/4028c1f19640302f0196418b2b960004.html" target="_blank"
+                               class="text-gray-300 hover:text-white transition-all-300">RibbonFold</a></li>
+                        <li><a href="https://m.ebiotrade.com/newsf/2025-11/20251121090331257.htm" target="_blank"
+                               class="text-gray-300 hover:text-white transition-all-300">AmyloGram</a></li>
+                        <li><a href="http://www.zoommicro.in/amylpeppred" target="_blank"
+                               class="text-gray-300 hover:text-white transition-all-300">AmylPepPred</a></li>
+                        <li><a href="http://comprec-lin.iiar.pwr.edu.pl/amyload/" target="_blank"
+                               class="text-gray-300 hover:text-white transition-all-300">AmyLoad</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-bold mb-4">Follow Us</h4>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-300 hover:text-white transition-all-300 text-xl">
+                            <i class="fa fa-weibo"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-all-300 text-xl">
+                            <i class="fa fa-weixin"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-all-300 text-xl">
+                            <i class="fa fa-github"></i>
+                        </a>
+                        <a href="#" class="text-gray-300 hover:text-white transition-all-300 text-xl">
+                            <i class="fa fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="border-t border-blue-700 mt-8 pt-6 text-center text-gray-400">
+            <p>&copy; 2025 Review of Computational Models for Amyloid Protein Prediction. All rights reserved.</p>
+        </div>
+    </div>
+</footer>
 
-      // search
-      if (!q) return true;
-      const blob = [
-        r.name, r.focus, r.type, r.status, r.last_update, r.sources, r.doi, r.url
-      ].filter(Boolean).join(" ").toLowerCase();
-      return blob.includes(q);
-    });
+    <!-- JavaScript -->
+    <script>
+        // Mobile Menu Toggle
+        document.getElementById('mobile-menu-button').addEventListener('click', function() {
+            const mobileMenu = document.getElementById('mobile-menu');
+            mobileMenu.classList.toggle('hidden');
+        });
 
-    // sort
-    if (state.sortKey){
-      const k = state.sortKey;
-      const dir = state.sortDir;
-      state.filtered.sort((a,b)=>{
-        const va = (a[k] ?? "").toString().toLowerCase();
-        const vb = (b[k] ?? "").toString().toLowerCase();
-        if (va < vb) return -1 * dir;
-        if (va > vb) return  1 * dir;
-        return 0;
-      });
-    }
+        // Close Update Notification
+        document.getElementById('close-update').addEventListener('click', function() {
+            this.parentElement.parentElement.style.display = 'none';
+        });
 
-    render();
-  }
+        // Contact Form Submission
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+            
+            if (!name || !email || !subject || !message) {
+                alert('Please fill in all required fields');
+                return;
+            }
+            
+            // Simulate form submission
+            alert('Thank you for your message! We will get back to you as soon as possible.');
+            this.reset();
+        });
 
-  function populateFilters(){
-    const focusSet = new Set();
-    const statusSet = new Set();
-    state.all.forEach(r=>{
-      if (r.focus) focusSet.add(r.focus);
-      if (r.status) statusSet.add(r.status);
-    });
 
-    const focusSel = el("focusFilter");
-    [...focusSet].sort().forEach(v=>{
-      const opt = document.createElement("option");
-      opt.value = v; opt.textContent = v;
-      focusSel.appendChild(opt);
-    });
 
-    const statusSel = el("statusFilter");
-    [...statusSet].sort().forEach(v=>{
-      const opt = document.createElement("option");
-      opt.value = v; opt.textContent = v;
-      statusSel.appendChild(opt);
-    });
-  }
 
-  function hookUI(){
-    ["q","focusFilter","typeFilter","statusFilter"].forEach(id=>{
-      el(id).addEventListener("input", applyFilters);
-      el(id).addEventListener("change", applyFilters);
-    });
+        /***********************
+         * Database (JSON-driven)
+         ***********************/
+        let DB_ALL = [];           // raw from json
+        let DB_VIEW = [];          // after search/filter/sort
+        let dbSortColumn = 0;      // 0:name 1:year 2:type 3:source
+        let dbSortDir = 1;         // 1 asc, -1 desc
+        let dbPage = 1;
+        const DB_PAGE_SIZE = 10;   // 你想每页显示多少条就改这里
 
-    el("reset").onclick = ()=>{
-      el("q").value = "";
-      el("focusFilter").value = "";
-      el("typeFilter").value = "";
-      el("statusFilter").value = "";
-      state.tab = "All";
-      document.querySelectorAll(".tab").forEach(t=>t.classList.remove("active"));
-      document.querySelector('.tab[data-tab="All"]').classList.add("active");
-      state.sortKey = null; state.sortDir = 1;
-      applyFilters();
-    };
+        async function loadDatabases() {
+          try {
+            const res = await fetch('./databases.json', { cache: 'no-store' });
+            if (!res.ok) throw new Error(`Failed to load databases.json: ${res.status}`);
+            DB_ALL = await res.json();
 
-    // tabs
-    document.querySelectorAll(".tab").forEach(t=>{
-      t.onclick = ()=>{
-        document.querySelectorAll(".tab").forEach(x=>x.classList.remove("active"));
-        t.classList.add("active");
-        state.tab = t.dataset.tab;
-        applyFilters();
-      };
-    });
+            // 初始化视图
+            applyDatabaseFilters(true);
+            bindDatabaseEvents();
+          } catch (e) {
+            console.error(e);
+            // 你也可以用更友好的提示方式
+            alert('Failed to load databases.json. Please check file path or deployment.');
+          }
+        }
 
-    // sorting
-    document.querySelectorAll("thead th").forEach(th=>{
-      th.onclick = ()=>{
-        const k = th.dataset.key;
-        if (!k) return;
-        if (state.sortKey === k) state.sortDir *= -1;
-        else { state.sortKey = k; state.sortDir = 1; }
-        applyFilters();
-      };
-    });
-  }
+        function bindDatabaseEvents() {
+          const searchEl = document.getElementById('database-search');
+          const filterEl = document.getElementById('database-filter');
+          const prevEl = document.getElementById('database-prev');
+          const nextEl = document.getElementById('database-next');
 
-  async function main(){
-    const res = await fetch("./data.json", {cache:"no-store"});
-    const data = await res.json();
+          if (searchEl) searchEl.addEventListener('input', () => applyDatabaseFilters(true));
+          if (filterEl) filterEl.addEventListener('change', () => applyDatabaseFilters(true));
+          if (prevEl) prevEl.addEventListener('click', () => { if (dbPage > 1) { dbPage--; renderDatabaseTable(); }});
+          if (nextEl) nextEl.addEventListener('click', () => {
+            const totalPages = Math.max(1, Math.ceil(DB_VIEW.length / DB_PAGE_SIZE));
+            if (dbPage < totalPages) { dbPage++; renderDatabaseTable(); }
+          });
+        }
 
-    state.all = data.items || [];
-    state.filtered = [...state.all];
+        function applyDatabaseFilters(resetPage) {
+          const searchTerm = (document.getElementById('database-search')?.value || '').trim().toLowerCase();
+          const filterValue = document.getElementById('database-filter')?.value || 'all';
 
-    // updates
-    const updates = (data.updates || []).map(u => `• ${u}`).join("<br/>");
-    el("updates").innerHTML = updates || "—";
+          DB_VIEW = DB_ALL.filter(item => {
+            const hay = `${item.name} ${item.year} ${item.type} ${item.source}`.toLowerCase();
+            const hit = searchTerm === '' || hay.includes(searchTerm);
+            const typeOk = (filterValue === 'all') || (String(item.type).trim() === filterValue);
+            return hit && typeOk;
+          });
 
-    populateFilters();
-    hookUI();
-    applyFilters();
+          // 排序（基于当前排序列/方向）
+          DB_VIEW.sort((a, b) => compareDb(a, b, dbSortColumn) * dbSortDir);
 
-    el("year").textContent = new Date().getFullYear();
-  }
+          if (resetPage) dbPage = 1;
+          renderDatabaseTable();
+        }
 
-  main().catch(err=>{
-    console.error(err);
-    el("tbody").innerHTML = `<tr><td colspan="11">Failed to load data.json：${err}</td></tr>`;
-  });
-</script>
+        function compareDb(a, b, col) {
+          const va = getDbField(a, col);
+          const vb = getDbField(b, col);
+
+          // year 用数字比，其它用字符串
+          if (col === 1) {
+            return (parseInt(va, 10) || 0) - (parseInt(vb, 10) || 0);
+          }
+          return String(va).localeCompare(String(vb));
+        }
+
+        function getDbField(item, col) {
+          if (col === 0) return item.name ?? '';
+          if (col === 1) return item.year ?? '';
+          if (col === 2) return item.type ?? '';
+          if (col === 3) return item.source ?? '';
+          return '';
+        }
+
+        // 这个函数名要和你的 th onclick="sortTable(i)" 保持一致
+        function sortTable(columnIndex) {
+          if (dbSortColumn === columnIndex) {
+            dbSortDir *= -1; // 同列切换升/降
+          } else {
+            dbSortColumn = columnIndex;
+            dbSortDir = 1;
+          }
+          applyDatabaseFilters(false);
+        }
+
+        function badgeClassByType(type) {
+          // 复用你原来的配色风格
+          const t = String(type).trim();
+          if (t === 'Experimental Data') return 'bg-blue-100 text-blue-800';
+          if (t === 'Integrated Data') return 'bg-green-100 text-green-800';
+          if (t === 'Structural Data') return 'bg-purple-100 text-purple-800';
+          if (t === 'Hexapeptide Data') return 'bg-yellow-100 text-yellow-800';
+          if (t === 'Computational Simulation Data') return 'bg-red-100 text-red-800';
+          return 'bg-gray-100 text-gray-800';
+        }
+
+        function renderDatabaseTable() {
+          const tbody = document.getElementById('database-table-body');
+          if (!tbody) return;
+
+          const total = DB_VIEW.length;
+          const totalPages = Math.max(1, Math.ceil(total / DB_PAGE_SIZE));
+          if (dbPage > totalPages) dbPage = totalPages;
+
+          const startIdx = (dbPage - 1) * DB_PAGE_SIZE;
+          const endIdx = Math.min(total, startIdx + DB_PAGE_SIZE);
+          const pageItems = DB_VIEW.slice(startIdx, endIdx);
+
+          // 清空
+          tbody.innerHTML = '';
+
+          // 渲染行
+          pageItems.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50 transition-colors';
+
+            tr.innerHTML = `
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">${escapeHtml(item.name ?? '')}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">${escapeHtml(item.year ?? '')}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full ${badgeClassByType(item.type)}">
+                  ${escapeHtml(item.type ?? '')}
+                </span>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                ${escapeHtml(item.source ?? '')}
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <a href="${escapeAttr(item.url ?? '#')}" target="_blank"
+                   class="text-primary hover:text-primary-dark transition-colors">
+                  Visit <i class="fa fa-external-link ml-1"></i>
+                </a>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+
+          // 更新分页显示
+          document.getElementById('database-start').textContent = total === 0 ? '0' : String(startIdx + 1);
+          document.getElementById('database-end').textContent = String(endIdx);
+          document.getElementById('database-total').textContent = String(total);
+
+          // 更新按钮状态
+          const prevEl = document.getElementById('database-prev');
+          const nextEl = document.getElementById('database-next');
+          if (prevEl) prevEl.disabled = (dbPage <= 1);
+          if (nextEl) nextEl.disabled = (dbPage >= totalPages);
+        }
+
+        function escapeHtml(s) {
+          return String(s)
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#39;');
+        }
+        function escapeAttr(s) {
+          // 属性里也做一下最基本转义
+          return escapeHtml(s).replaceAll('`', '&#96;');
+        }
+
+        // 页面加载后执行
+        document.addEventListener('DOMContentLoaded', function() {
+          loadDatabases();
+          loadMethods();
+        });
+
+                /***********************
+         * Methods (JSON-driven)
+         ***********************/
+        let M_ALL = [];
+        let M_VIEW = [];
+        let mSortColumn = 0;     // 0:year 1:method 2:dataset_used 3:model_algorithm
+        let mSortDir = 1;        // 1 asc, -1 desc
+        let mPage = 1;
+        const M_PAGE_SIZE = 10;  // 每页条数可改
+
+        async function loadMethods() {
+          try {
+            const res = await fetch('./methods.json', { cache: 'no-store' });
+            if (!res.ok) throw new Error(`Failed to load methods.json: ${res.status}`);
+            M_ALL = await res.json();
+
+            applyMethodsFilters(true);
+            bindMethodsEvents();
+          } catch (e) {
+            console.error(e);
+            alert('Failed to load methods.json. Please check file path or deployment.');
+          }
+        }
+
+        function bindMethodsEvents() {
+          const searchEl = document.getElementById('methods-search');
+          const filterEl = document.getElementById('methods-filter');
+          const prevEl = document.getElementById('methods-prev');
+          const nextEl = document.getElementById('methods-next');
+
+          if (searchEl) searchEl.addEventListener('input', () => applyMethodsFilters(true));
+          if (filterEl) filterEl.addEventListener('change', () => applyMethodsFilters(true));
+
+          if (prevEl) prevEl.addEventListener('click', () => {
+            if (mPage > 1) { mPage--; renderMethodsTable(); }
+          });
+
+          if (nextEl) nextEl.addEventListener('click', () => {
+            const totalPages = Math.max(1, Math.ceil(M_VIEW.length / M_PAGE_SIZE));
+            if (mPage < totalPages) { mPage++; renderMethodsTable(); }
+          });
+
+          // Download Button 仍保留你原来的“coming soon”
+          const dl = document.getElementById('methods-download');
+          if (dl) dl.addEventListener('click', () => {
+            alert('The data download feature will be available soon. Stay tuned!');
+          });
+        }
+
+        function applyMethodsFilters(resetPage) {
+          const searchTerm = (document.getElementById('methods-search')?.value || '').trim().toLowerCase();
+          const filterValue = document.getElementById('methods-filter')?.value || 'all';
+
+          M_VIEW = M_ALL.filter(item => {
+            const hay = `${item.year} ${item.method} ${item.dataset_used} ${item.model_algorithm} ${item.reference_name}`.toLowerCase();
+            const hit = searchTerm === '' || hay.includes(searchTerm);
+
+            let yearOk = true;
+            if (filterValue !== 'all') {
+              const y = parseInt(item.year, 10) || 0;
+
+              // 你的 option 是 "2019 and Earlier"（注意大小写）
+              if (filterValue === '2019 and Earlier') {
+                yearOk = y <= 2019;
+              } else {
+                yearOk = String(item.year).trim() === String(filterValue).trim();
+              }
+            }
+            return hit && yearOk;
+          });
+
+          // 排序
+          M_VIEW.sort((a, b) => compareMethods(a, b, mSortColumn) * mSortDir);
+
+          if (resetPage) mPage = 1;
+          renderMethodsTable();
+        }
+
+        function compareMethods(a, b, col) {
+          const va = getMethodsField(a, col);
+          const vb = getMethodsField(b, col);
+
+          if (col === 0) { // year numeric
+            return (parseInt(va, 10) || 0) - (parseInt(vb, 10) || 0);
+          }
+          return String(va).localeCompare(String(vb));
+        }
+
+        function getMethodsField(item, col) {
+          if (col === 0) return item.year ?? '';
+          if (col === 1) return item.method ?? '';
+          if (col === 2) return item.dataset_used ?? '';
+          if (col === 3) return item.model_algorithm ?? '';
+          return '';
+        }
+
+        // 这个函数名要和你的 th onclick="sortMethodsTable(i)" 保持一致
+        function sortMethodsTable(columnIndex) {
+          if (mSortColumn === columnIndex) {
+            mSortDir *= -1;
+          } else {
+            mSortColumn = columnIndex;
+            mSortDir = 1;
+          }
+          applyMethodsFilters(false);
+        }
+
+        function renderMethodsTable() {
+          const tbody = document.getElementById('methods-table-body');
+          if (!tbody) return;
+
+          const total = M_VIEW.length;
+          const totalPages = Math.max(1, Math.ceil(total / M_PAGE_SIZE));
+          if (mPage > totalPages) mPage = totalPages;
+
+          const startIdx = (mPage - 1) * M_PAGE_SIZE;
+          const endIdx = Math.min(total, startIdx + M_PAGE_SIZE);
+          const pageItems = M_VIEW.slice(startIdx, endIdx);
+
+          tbody.innerHTML = '';
+
+          pageItems.forEach(item => {
+            const tr = document.createElement('tr');
+            tr.className = 'hover:bg-gray-50 transition-colors';
+
+            const toolUrl = item.tool_url ?? '#';
+            const ghUrl = item.github_url ?? '#';
+            const refName = item.reference_name ?? 'Reference';
+            const refUrl = item.reference_url ?? '#';
+
+            tr.innerHTML = `
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">${escapeHtml(item.year ?? '')}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm font-medium text-gray-900">${escapeHtml(item.method ?? '')}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">${escapeHtml(item.dataset_used ?? '')}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap">
+                <div class="text-sm text-gray-500">${escapeHtml(item.model_algorithm ?? '')}</div>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <a href="${escapeAttr(toolUrl)}" target="_blank"
+                   class="text-primary hover:text-primary-dark transition-colors">
+                  Visit <i class="fa fa-external-link ml-1"></i>
+                </a>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
+                <a href="${escapeAttr(ghUrl)}" target="_blank"
+                   class="text-gray-800 hover:text-gray-600 transition-colors">
+                  <i class="fa fa-github mr-1"></i> GitHub
+                </a>
+              </td>
+              <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                <a href="${escapeAttr(refUrl)}" target="_blank"
+                   class="text-primary hover:text-primary-dark transition-colors">
+                  ${escapeHtml(refName)}
+                </a>
+              </td>
+            `;
+            tbody.appendChild(tr);
+          });
+
+          // 更新分页显示
+          document.getElementById('methods-start').textContent = total === 0 ? '0' : String(startIdx + 1);
+          document.getElementById('methods-end').textContent = String(endIdx);
+          document.getElementById('methods-total').textContent = String(total);
+
+          // 更新按钮状态
+          const prevEl = document.getElementById('methods-prev');
+          const nextEl = document.getElementById('methods-next');
+          if (prevEl) prevEl.disabled = (mPage <= 1);
+          if (nextEl) nextEl.disabled = (mPage >= totalPages);
+        }
+
+        /* 如果你在 Database 代码里已经有这俩函数，可以删掉下面重复定义 */
+        function escapeHtml(s) {
+          return String(s)
+            .replaceAll('&', '&amp;')
+            .replaceAll('<', '&lt;')
+            .replaceAll('>', '&gt;')
+            .replaceAll('"', '&quot;')
+            .replaceAll("'", '&#39;');
+        }
+        function escapeAttr(s) {
+          return escapeHtml(s).replaceAll('`', '&#96;');
+        }
+
+
+        // Charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Year Chart
+            const yearCtx = document.getElementById('yearChart').getContext('2d');
+            const yearChart = new Chart(yearCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['2015-2019', '2020', '2021', '2022', '2023', '2024', '2025'],
+                    datasets: [{
+                        label: 'Number of Published Papers',
+                        data: [12, 18, 25, 32, 45, 56, 42],
+                        backgroundColor: '#1a56db',
+                        borderColor: '#1e429f',
+                        borderWidth: 1,
+                        borderRadius: 6,
+                        barThickness: 30
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: true,
+                            position: 'top',
+                            labels: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 14
+                                }
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#1a56db',
+                            bodyColor: '#2d3748',
+                            borderColor: '#e2e8f0',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            usePointStyle: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return `Number of published papers: ${context.parsed.y}`;
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            grid: {
+                                color: 'rgba(0, 0, 0, 0.05)'
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Inter'
+                                }
+                            }
+                        },
+                        x: {
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                                font: {
+                                    family: 'Inter'
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Method Chart
+            const methodCtx = document.getElementById('methodChart').getContext('2d');
+            const methodChart = new Chart(methodCtx, {
+                type: 'pie',
+                data: {
+                    labels: ['Deep Learning', 'Random Forest', 'Support Vector Machine', 'Logistic Regression', 'Other Machine Learning Methods'],
+                    datasets: [{
+                        data: [35, 25, 20, 15, 5],
+                        backgroundColor: [
+                            '#1a56db',
+                            '#0694a2',
+                            '#3f83f8',
+                            '#76a9fa',
+                            '#c4ddff'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 14
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#1a56db',
+                            bodyColor: '#2d3748',
+                            borderColor: '#e2e8f0',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            usePointStyle: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.parsed}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Application Chart (New)
+            const applicationCtx = document.getElementById('applicationChart').getContext('2d');
+            const applicationChart = new Chart(applicationCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Alzheimer’s Disease', 'Parkinson’s Disease', 'Huntington’s Disease', 'Amyloidosis', 'Other Diseases'],
+                    datasets: [{
+                        data: [40, 25, 15, 12, 8],
+                        backgroundColor: [
+                            '#ef4444',
+                            '#f97316',
+                            '#eab308',
+                            '#22c55e',
+                            '#8b5cf6'
+                        ],
+                        borderWidth: 2,
+                        borderColor: '#ffffff'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: {
+                                font: {
+                                    family: 'Inter',
+                                    size: 14
+                                },
+                                padding: 20
+                            }
+                        },
+                        tooltip: {
+                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
+                            titleColor: '#1a56db',
+                            bodyColor: '#2d3748',
+                            borderColor: '#e2e8f0',
+                            borderWidth: 1,
+                            padding: 12,
+                            boxPadding: 6,
+                            usePointStyle: true,
+                            callbacks: {
+                                label: function(context) {
+                                    return `${context.label}: ${context.parsed}%`;
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+        });
+
+        // Smooth Scrolling for Anchor Links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    const mobileMenu = document.getElementById('mobile-menu');
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+
+        // Add scroll event for header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 100) {
+                header.classList.add('shadow-lg');
+            } else {
+                header.classList.remove('shadow-lg');
+            }
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
