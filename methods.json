@@ -180,6 +180,126 @@
     "reference_url": "https://doi.org/10.1016/j.ygeno.2020.09.065"
   },
   {
+    "year": "2020",
+    "method": "PATH",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning",
+    "tool_url": "",
+    "github_url": "https://github.com/KubaWojciechowski/PATH",
+    "reference_name": "https://www.nature.com/articles/s41598-020-64270-3",
+    "reference_url": "https://www.nature.com/articles/s41598-020-64270-3"
+  },
+  {
+    "year": "2020",
+    "method": "CPAD 2.0",
+    "dataset_used": "https://web.iitm.ac.in/bioinfo2/cpad2/index.html",
+    "model_algorithm": "",
+    "tool_url": "https://web.iitm.ac.in/bioinfo2/cpad2/index.html",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1080/13506129.2020.1715363",
+    "reference_url": "https://doi.org/10.1080/13506129.2020.1715363"
+  },
+  {
+    "year": "2019",
+    "method": "MAGRE",
+    "dataset_used": "",
+    "model_algorithm": "SVM",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1016/j.amc.2019.04.015",
+    "reference_url": "https://doi.org/10.1016/j.amc.2019.04.015"
+  },
+  {
+    "year": "2020",
+    "method": "WALTZ-DB 2.0",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "http://waltzdb.switchlab.org/",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1093/nar/gkz758",
+    "reference_url": "https://doi.org/10.1093/nar/gkz758"
+  },
+  {
+    "year": "2019",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1063/1.5113848",
+    "reference_url": "https://doi.org/10.1063/1.5113848"
+  },
+  {
+    "year": "2019",
+    "method": "Aggrescan3D (A3D) 2.0",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "http://biocomp.chem.uw.edu.pl/A3D2/",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1093/nar/gkz321",
+    "reference_url": "https://doi.org/10.1093/nar/gkz321"
+  },
+  {
+    "year": "2015",
+    "method": "AGGRESCAN3D (A3D)",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "http://biocomp.chem.uw.edu.pl/A3D/",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1093/nar/gkv359",
+    "reference_url": "https://doi.org/10.1093/nar/gkv359"
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
     "year": "",
     "method": "",
     "dataset_used": "",
@@ -200,6 +320,7 @@
     "reference_url": ""
   }
 ]
+
 
 
 
