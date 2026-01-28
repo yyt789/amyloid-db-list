@@ -160,24 +160,24 @@
     "reference_url": "10.1109/TCBB.2019.2936846"
   },
   {
-    "year": "",
+    "year": "2021",
     "method": "",
-    "dataset_used": "",
-    "model_algorithm": "",
+    "dataset_used": "AmyLoad",
+    "model_algorithm": "Machine learning",
     "tool_url": "",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://www.nature.com/articles/s41598-021-86530-6",
+    "reference_url": "https://www.nature.com/articles/s41598-021-86530-6"
   },
   {
-    "year": "",
-    "method": "",
-    "dataset_used": "",
-    "model_algorithm": "",
-    "tool_url": "",
-    "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "year": "2021",
+    "method": "iAMY-SCM",
+    "dataset_used": "RFAmyloid",
+    "model_algorithm": "Machine learning",
+    "tool_url": "http://camt.pythonanywhere.com/iAMY-SCM",
+    "github_url": "https://github.com/Shoombuatong2527/Benchmark-datasets/tree/master/iAMY",
+    "reference_name": "https://doi.org/10.1016/j.ygeno.2020.09.065",
+    "reference_url": "https://doi.org/10.1016/j.ygeno.2020.09.065"
   },
   {
     "year": "",
@@ -200,5 +200,6 @@
     "reference_url": ""
   }
 ]
+
 
 
