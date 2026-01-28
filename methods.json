@@ -33,7 +33,7 @@
     "year": "2025",
     "method": "Cross-Beta DB",
     "dataset_used": "",
-    "model_algorithm": "machine-learning, database",
+    "model_algorithm": "Machine learning, Database",
     "tool_url": "https://bioinfo.crbm.cnrs.fr/index.php?route=tools&tool=35",
     "github_url": "https://github.com/Valentin-Gonay/cross-beta-predictor",
     "reference_name": "https://doi.org/10.1002/alz.14510",
@@ -48,6 +48,156 @@
     "github_url": "https://github.com/zzyywww/ABAmy2",
     "reference_name": "https://doi.org/10.1016/j.ymeth.2024.11.005",
     "reference_url": "https://doi.org/10.1016/j.ymeth.2024.11.005"
+  },
+  {
+    "year": "2024",
+    "method": "AggreProt",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "https://loschmidt.chemi.muni.cz/aggreprot/",
+    "github_url": "https://github.com/loschmidt/aggreprot-predictor?tab=readme-ov-file",
+    "reference_name": "https://doi.org/10.1093/nar/gkae420",
+    "reference_url": "https://doi.org/10.1093/nar/gkae420"
+  },
+  {
+    "year": "2024",
+    "method": "CORDAX web server",
+    "dataset_used": "",
+    "model_algorithm": "Logistic regression",
+    "tool_url": "https://cordax.switchlab.org/",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1093/bioinformatics/btae279",
+    "reference_url": "https://doi.org/10.1093/bioinformatics/btae279"
+  },
+  {
+    "year": "2024",
+    "method": "AMYGNN",
+    "dataset_used": "",
+    "model_algorithm": "Deep Learning",
+    "tool_url": "",
+    "github_url": "https://github.com/yzjizwz/AMYGNN.git",
+    "reference_name": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c02035",
+    "reference_url": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c02035"
+  },
+  {
+    "year": "2023",
+    "method": "Amy_Fuse",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1016/j.asoc.2023.111100",
+    "reference_url": "https://doi.org/10.1016/j.asoc.2023.111100"
+  },
+  {
+    "year": "2023",
+    "method": "",
+    "dataset_used": "Deep Learning",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://pubs.acs.org/doi/10.1021/acsbiomaterials.3c01001",
+    "reference_url": "https://pubs.acs.org/doi/10.1021/acsbiomaterials.3c01001"
+  },
+  {
+    "year": "2023",
+    "method": "AggBERT",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning,LLM",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c00817",
+    "reference_url": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c00817"
+  },
+  {
+    "year": "2023",
+    "method": "AB-Amy",
+    "dataset_used": "",
+    "model_algorithm": "SVG",
+    "tool_url": "http://i.uestc.edu.cn/AB-Amy/",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1093/abt/tbad012",
+    "reference_url": "https://doi.org/10.1093/abt/tbad012"
+  },
+  {
+    "year": "2023",
+    "method": "ECAmyloid",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning",
+    "tool_url": "",
+    "github_url": "https://github.com/KOALA-L/ECAmyloid.git",
+    "reference_name": "https://doi.org/10.1016/j.compbiolchem.2023.107853",
+    "reference_url": "https://doi.org/10.1016/j.compbiolchem.2023.107853"
+  },
+  {
+    "year": "2022",
+    "method": "AMYPred-FRL",
+    "dataset_used": "http://pmlabstack.pythonanywhere.com/AMYPred-FRL",
+    "model_algorithm": "Machine learning",
+    "tool_url": "http://pmlabstack.pythonanywhere.com/AMYPred-FRL",
+    "github_url": "",
+    "reference_name": "https://www.nature.com/articles/s41598-022-11897-z",
+    "reference_url": "https://www.nature.com/articles/s41598-022-11897-z"
+  },
+  {
+    "year": "2020",
+    "method": "ANuPP",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning",
+    "tool_url": "https://web.iitm.ac.in/bioinfo2/ANuPP/",
+    "github_url": "",
+    "reference_name": "10.1016/j.jmb.2020.11.006",
+    "reference_url": "10.1016/j.jmb.2020.11.006"
+  },
+  {
+    "year": "2021",
+    "method": "MILAMP",
+    "dataset_used": "",
+    "model_algorithm": "Machine learning",
+    "tool_url": "http://faculty.pieas.edu.pk/fayyaz/software.html#MILAMP",
+    "github_url": "http://faculty.pieas.edu.pk/fayyaz/software.html#MILAMP",
+    "reference_name": "10.1109/TCBB.2019.2936846",
+    "reference_url": "10.1109/TCBB.2019.2936846"
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
+  },
+  {
+    "year": "",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "",
+    "reference_url": ""
   }
 ]
 
