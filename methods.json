@@ -92,8 +92,8 @@
   {
     "year": "2023",
     "method": "",
-    "dataset_used": "Deep Learning",
-    "model_algorithm": "",
+    "dataset_used": "",
+    "model_algorithm": "Deep Learning",
     "tool_url": "",
     "github_url": "",
     "reference_name": "https://pubs.acs.org/doi/10.1021/acsbiomaterials.3c01001",
@@ -200,4 +200,5 @@
     "reference_url": ""
   }
 ]
+
 
