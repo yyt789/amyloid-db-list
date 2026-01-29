@@ -250,76 +250,147 @@
     "reference_url": "https://doi.org/10.1093/nar/gkv359"
   },
   {
-    "year": "",
-    "method": "",
+    "year": "2014",
+    "method": "CamSol",
     "dataset_used": "",
     "model_algorithm": "",
     "tool_url": "",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://doi.org/10.1016/j.jmb.2014.09.026",
+    "reference_url": "https://doi.org/10.1016/j.jmb.2014.09.026"
   },
   {
-    "year": "",
-    "method": "",
+    "year": "2014",
+    "method": "PASTA 2.0",
     "dataset_used": "",
     "model_algorithm": "",
-    "tool_url": "",
+    "tool_url": "http://protein.bio.unipd.it/pasta2/",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://doi.org/10.1093/nar/gku399",
+    "reference_url": "https://doi.org/10.1093/nar/gku399"
   },
   {
-    "year": "",
-    "method": "",
+    "year": "2014",
+    "method": "PLAAC",
     "dataset_used": "",
     "model_algorithm": "",
-    "tool_url": "",
-    "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "tool_url": "http://plaac.wi.mit.edu/",
+    "github_url": "http://github.com/whitehead/plaac",
+    "reference_name": "https://doi.org/10.1093/bioinformatics/btu310",
+    "reference_url": "https://doi.org/10.1093/bioinformatics/btu310"
   },
   {
-    "year": "",
-    "method": "",
+    "year": "2013",
+    "method": "MetAmyl",
     "dataset_used": "",
     "model_algorithm": "",
-    "tool_url": "",
+    "tool_url": "http://metamyl.genouest.org/",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://doi.org/10.1371/journal.pone.0079722",
+    "reference_url": "https://doi.org/10.1371/journal.pone.0079722"
   },
   {
-    "year": "",
-    "method": "",
+    "year": "2013",
+    "method": "AmylPred2",
     "dataset_used": "",
     "model_algorithm": "",
-    "tool_url": "",
+    "tool_url": "http://biophysics.biol.uoa.gr/AMYLPRED2",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://doi.org/10.1371/journal.pone.0054175",
+    "reference_url": "https://doi.org/10.1371/journal.pone.0054175"
   },
   {
-    "year": "",
-    "method": "",
+    "year": "2010",
+    "method": "Waltz",
     "dataset_used": "",
     "model_algorithm": "",
-    "tool_url": "",
+    "tool_url": "http://waltz.switchlab.org/",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://www.nature.com/articles/nmeth.1432",
+    "reference_url": "https://www.nature.com/articles/nmeth.1432"
   },
   {
-    "year": "",
+    "year": "2010",
+    "method": "3D profile",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1073/pnas.0915166107",
+    "reference_url": "https://doi.org/10.1073/pnas.0915166107"
+  },
+  {
+    "year": "2009",
+    "method": "FoldAmyloid",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "http://antares.protres.ru/fold-amyloid/",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1093/bioinformatics/btp691",
+    "reference_url": "https://doi.org/10.1093/bioinformatics/btp691"
+  },
+  {
+    "year": "2009",
+    "method": "SAP",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1073/pnas.0904191106",
+    "reference_url": "https://doi.org/10.1073/pnas.0904191106"
+  },
+  {
+    "year": "2009",
+    "method": "SALSA",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1110/ps.062624507",
+    "reference_url": "https://doi.org/10.1110/ps.062624507"
+  },
+  {
+    "year": "2008",
+    "method": "Zyggregator",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1016/j.jmb.2008.05.013",
+    "reference_url": "https://doi.org/10.1016/j.jmb.2008.05.013"
+  },
+  {
+    "year": "2006",
     "method": "",
     "dataset_used": "",
     "model_algorithm": "",
     "tool_url": "",
     "github_url": "",
-    "reference_name": "",
-    "reference_url": ""
+    "reference_name": "https://doi.org/10.1371/journal.pcbi.0020177",
+    "reference_url": "https://doi.org/10.1371/journal.pcbi.0020177"
+  },
+  {
+    "year": "2004",
+    "method": "TANGO",
+    "dataset_used": "",
+    "model_algorithm": "Statistical mechanics algorithm",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://www.nature.com/articles/nbt1012",
+    "reference_url": "https://www.nature.com/articles/nbt1012"
+  },
+  {
+    "year": "1982",
+    "method": "",
+    "dataset_used": "",
+    "model_algorithm": "",
+    "tool_url": "",
+    "github_url": "",
+    "reference_name": "https://doi.org/10.1016/0022-2836(82)90515-0",
+    "reference_url": "https://doi.org/10.1016/0022-2836(82)90515-0"
   }
 ]
+
 
 
 
