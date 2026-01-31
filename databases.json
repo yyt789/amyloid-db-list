@@ -8,7 +8,7 @@
   },
   {
     "name": "Amyloid Atlas",
-    "year": "2024-05-22",
+    "year": "2026-01-07",
     "type": "Experimental",
     "source": "PDB; PubMed",
     "url": "https://doi.org/10.1016/j.cell.2021.08.013"
@@ -21,8 +21,8 @@
     "url": "https://doi.org/10.1101/2024.02.12.579644"
   },
   {
-    "name": "CPAD2",
-    "year": "2024-04-15",
+    "name": "CPAD 2.0",
+    "year": "2019-04-15",
     "type": "Experimental",
     "source": "CPAD; Waltz-DB 2.0; AmyLoad; AmyPro; UniProt; PDB; PubMed",
     "url": "https://doi.org/10.1080/13506129.2020.1715363"
@@ -42,6 +42,20 @@
     "url": "https://doi.org/10.1093/nar/gkx950"
   },
   {
+    "name": "Amy Dataset",
+    "year": "2018",
+    "type": "Experimental",
+    "source": "PDB; UniProt; PubMed",
+    "url": "https://doi.org/10.3390/ijms19072071"
+  },
+  {
+    "name": "GSE268261",
+    "year": "2025-05-07",
+    "type": "Experimentally Synthesized",
+    "source": "",
+    "url": "https://www.ncbi.nlm.nih.gov/geo/query/acc.cgi?acc=GSM8288859"
+  },
+  {
     "name": "AmyloGraph",
     "year": "2023-06-08",
     "type": "Experimental",
@@ -50,7 +64,7 @@
   },
   {
     "name": "StAmP",
-    "year": "2022-03-09",
+    "year": "2025-09-12",
     "type": "Experimental and prediction",
     "source": "WALTZ-DB; AmyPro; CPAD; PDB; UniProt",
     "url": "https://doi.org/10.1093/bioinformatics/btac126"
@@ -153,4 +167,5 @@
     "source": "Academic Research",
     "url": "https://doi.org/10.1186/1471-2105-9-273"
   }
+
 ]
