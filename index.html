@@ -541,92 +541,90 @@
     </div>
 </section>
 
-    <!-- Contact Section -->
-    <section id="contact" class="py-12 md:py-16 bg-light">
+<!-- Contact Section -->
+<section id="contact" class="py-12 md:py-16 bg-light">
     <div class="container mx-auto px-4">
-        <h2 class="text-3xl font-bold mb-2 text-center">Contact Us</h2>
-        <p class="text-gray-600 text-center mb-8">If you have questions, suggestions, or collaboration inquiries, please
-            feel free to contact us.</p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div class="bg-white rounded-lg p-6 shadow-card">
-                <h3 class="text-xl font-bold mb-4">Contact Information</h3>
-                <div class="space-y-4">
-                    <div class="flex items-start">
-                        <div class="text-primary text-xl mt-1 mr-4">
-                            <i class="fa fa-envelope"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Email</h4>
-                            <p class="text-gray-700">amyloid-prediction@example.com</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="text-primary text-xl mt-1 mr-4">
-                            <i class="fa fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Phone</h4>
-                            <p class="text-gray-700">+86 123 4567 8910</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="text-primary text-xl mt-1 mr-4">
-                            <i class="fa fa-map-marker"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">Address</h4>
-                            <p class="text-gray-700">No. 30 Xueyuan Road, Haidian District, Beijing, China</p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="text-primary text-xl mt-1 mr-4">
-                            <i class="fa fa-weixin"></i>
-                        </div>
-                        <div>
-                            <h4 class="font-bold">WeChat Official Account</h4>
-                            <p class="text-gray-700">Amyloid Research</p>
-                        </div>
-                    </div>
-                </div>
+      <h2 class="text-3xl font-bold mb-2 text-center">Contact Us</h2>
+      <p class="text-gray-600 text-center mb-8">
+        If you have questions, suggestions, or collaboration inquiries, please
+        feel free to contact us.
+      </p>
+  
+      <!-- 改为纵向排列 -->
+      <div class="flex flex-col gap-8 max-w-4xl mx-auto">
+  
+        <!-- Message -->
+        <div class="bg-white rounded-lg p-6 shadow-card">
+          <h3 class="text-xl font-bold mb-4">Message</h3>
+          <form id="contact-form">
+            <div class="mb-4">
+              <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
+              <input type="text" id="name"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                     placeholder="Enter your name">
             </div>
-
-            <div class="bg-white rounded-lg p-6 shadow-card">
-                <h3 class="text-xl font-bold mb-4">Message</h3>
-                <form id="contact-form">
-                    <div class="mb-4">
-                        <label for="name" class="block text-gray-700 font-medium mb-2">Name</label>
-                        <input type="text" id="name"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                               placeholder="Enter your name">
-                    </div>
-                    <div class="mb-4">
-                        <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
-                        <input type="email" id="email"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                               placeholder="Enter your email">
-                    </div>
-                    <div class="mb-4">
-                        <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
-                        <input type="text" id="subject"
-                               class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                               placeholder="Enter a subject">
-                    </div>
-                    <div class="mb-4">
-                        <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
-                        <textarea id="message" rows="4"
-                                  class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
-                                  placeholder="Enter your message"></textarea>
-                    </div>
-                    <button type="submit"
-                            class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-secondary transition-all-300">
-                        Submit Message
-                    </button>
-                </form>
+  
+            <div class="mb-4">
+              <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+              <input type="email" id="email"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                     placeholder="Enter your email">
             </div>
+  
+            <div class="mb-4">
+              <label for="subject" class="block text-gray-700 font-medium mb-2">Subject</label>
+              <input type="text" id="subject"
+                     class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                     placeholder="Enter a subject">
+            </div>
+  
+            <div class="mb-4">
+              <label for="message" class="block text-gray-700 font-medium mb-2">Message</label>
+              <textarea id="message" rows="4"
+                        class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-primary"
+                        placeholder="Enter your message"></textarea>
+            </div>
+  
+            <button type="submit"
+                    class="bg-primary text-white px-6 py-2 rounded-lg font-medium hover:bg-secondary transition-all-300">
+              Submit Message
+            </button>
+          </form>
         </div>
+  
+        <!-- Contact Information -->
+        <div class="bg-white rounded-lg p-6 shadow-card">
+          <h3 class="text-xl font-bold mb-4">Contact Information</h3>
+  
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="text-primary text-xl mt-1 mr-4">
+                <i class="fa fa-envelope"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Email</h4>
+                <p class="text-gray-700">hnumxlin@hainanu.edu.cn</p>
+              </div>
+            </div>
+  
+            <div class="flex items-start">
+              <div class="text-primary text-xl mt-1 mr-4">
+                <i class="fa fa-map-marker"></i>
+              </div>
+              <div>
+                <h4 class="font-bold">Address</h4>
+                <p class="text-gray-700">
+                  No. 58 Renmin Avenue, Meilan District, Haikou City, Hainan Province, China
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+  
+      </div>
     </div>
-</section>
+  </section>
+  
 
     <!-- Footer -->
     <footer class="bg-primary text-white py-8">
