@@ -272,8 +272,7 @@
                         <option value="all">All Types</option>
                         <option value="Experimental">Experimental</option>
                         <option value="Prediction">Prediction</option>
-                        <option value="Experimental and prediction">Experimental and prediction</option>
-                        <option value="Integrated">Integrated</option>
+                        <option value="Experimentally Synthesized">Experimental and prediction</option>
 
                     </select>
                     <button id="database-download"
@@ -796,7 +795,16 @@
           const filterEl = document.getElementById('database-filter');
           const prevEl = document.getElementById('database-prev');
           const nextEl = document.getElementById('database-next');
-
+          const dlDb = document.getElementById('database-download');
+          if (dlDb) dlDb.addEventListener('click', () => {
+            downloadCSV(DB_VIEW, 'databases_filtered.csv', [
+                { key: 'name', label: 'Dataset Name' },
+                { key: 'year', label: 'Published/Updated' },
+                { key: 'type', label: 'Data Type' },
+                { key: 'source', label: 'Data Source' },
+                { key: 'url', label: 'Link' },
+            ]);
+          });
           if (searchEl) searchEl.addEventListener('input', () => applyDatabaseFilters(true));
           if (filterEl) filterEl.addEventListener('change', () => applyDatabaseFilters(true));
           if (prevEl) prevEl.addEventListener('click', () => { if (dbPage > 1) { dbPage--; renderDatabaseTable(); }});
@@ -868,8 +876,8 @@
             const t = String(type || '').toLowerCase();
 
             if (t.includes('experimental')) return 'bg-blue-100 text-blue-800';
-            if (t.includes('integrated')) return 'bg-green-100 text-green-800';
-            if (t.includes('predict')) return 'bg-cyan-100 text-cyan-800';
+            if (t.includes('predictive')) return 'bg-green-100 text-green-800';
+            if (t.includes('experimentally synthesized')) return 'bg-cyan-100 text-cyan-800';
 
             return 'bg-gray-100 text-gray-800';
         }
@@ -1002,10 +1010,23 @@
           });
 
           // Download Button 仍保留你原来的“coming soon”
-          const dl = document.getElementById('methods-download');
-          if (dl) dl.addEventListener('click', () => {
-            alert('The data download feature will be available soon. Stay tuned!');
-          });
+        //   const dl = document.getElementById('methods-download');
+        //   if (dl) dl.addEventListener('click', () => {
+        //     alert('The data download feature will be available soon. Stay tuned!');
+        //   });
+          const dlM = document.getElementById('methods-download');
+          if (dlM) dlM.addEventListener('click', () => {
+          downloadCSV(M_VIEW, 'methods_filtered.csv', [
+            { key: 'year', label: 'Year' },
+            { key: 'method', label: 'Method' },
+            { key: 'dataset_used', label: 'Database Used' },
+            { key: 'model_algorithm', label: 'Model/Algorithm' },
+            { key: 'tool_url', label: 'Tool Link' },
+            { key: 'github_url', label: 'GitHub' },
+            { key: 'reference_name', label: 'Reference' },
+            { key: 'reference_url', label: 'Reference URL' },
+          ]);
+         });        
         }
 
         function applyMethodsFilters(resetPage) {
@@ -1300,6 +1321,49 @@
         function syncMethodsScrollbar() { syncScrollbar('methods'); }
         function syncDatabaseScrollbar() { syncScrollbar('database'); }
 
+
+
+
+        function downloadCSV(rows, filename, columns) {
+          try {
+            if (!Array.isArray(rows) || rows.length === 0) {
+              alert('No data to download (current filter returned 0 rows).');
+              return;
+            }
+
+            const header = columns.map(c => csvEscape(c.label)).join(',');
+            const lines = rows.map(r => {
+              return columns.map(c => csvEscape(r?.[c.key] ?? '')).join(',');
+            });
+
+            const csv = [header, ...lines].join('\n');
+
+            // Add BOM for Excel (UTF-8)
+            const blob = new Blob(["\uFEFF" + csv], { type: 'text/csv;charset=utf-8;' });
+            const url = URL.createObjectURL(blob);
+
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            a.remove();
+
+            URL.revokeObjectURL(url);
+        } catch (e) {
+            console.error(e);
+            alert('Download failed. Please check console logs.');
+        }
+        }
+
+        function csvEscape(value) {
+          const s = String(value);
+          // Escape double quotes
+          const escaped = s.replace(/"/g, '""');
+          // If contains comma/newline/quote, wrap with quotes
+          if (/[",\n\r]/.test(escaped)) return `"${escaped}"`;
+          return escaped;
+        }
     </script>
 </body>
 </html>
