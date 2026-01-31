@@ -976,7 +976,7 @@
         let M_ALL = [];
         let M_VIEW = [];
         let mSortColumn = 0;     // 0:year 1:method 2:dataset_used 3:model_algorithm
-        let mSortDir = 1;        // 1 asc, -1 desc
+        let mSortDir = -1;        // 1 asc, -1 desc
         let mPage = 1;
         const M_PAGE_SIZE = 10;  // 每页条数可改
 
@@ -1085,7 +1085,7 @@
             mSortDir *= -1;
           } else {
             mSortColumn = columnIndex;
-            mSortDir = 1;
+            mSortDir = -1;
           }
           applyMethodsFilters(false);
         }
