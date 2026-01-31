@@ -755,8 +755,8 @@
          ***********************/
         let DB_ALL = [];           // raw from json
         let DB_VIEW = [];          // after search/filter/sort
-        let dbSortColumn = 0;      // 0:name 1:year 2:type 3:source
-        let dbSortDir = 1;         // 1 asc, -1 desc
+        let dbSortColumn = 1;      // 0:name 1:year 2:type 3:source
+        let dbSortDir = -1;         // 1 asc, -1 desc
         let dbPage = 1;
         const DB_PAGE_SIZE = 10;   // 你想每页显示多少条就改这里
 
@@ -1331,6 +1331,7 @@
     </script>
 </body>
 </html>
+
 
 
 
