@@ -283,7 +283,7 @@
                 </div>
             </div>
 
-            <div id="methods-table-scroll" class="overflow-x-auto">
+            <div id="database-table-scroll" class="overflow-x-auto">
                 <table class="min-w-full divide-y divide-gray-200">
                     <thead class="bg-gray-50">
                     <tr>
@@ -319,8 +319,8 @@
             </div>
             <!-- External horizontal scrollbar (above pagination) -->
             <div class="mt-4">
-              <div id="methods-scrollbar" class="overflow-x-auto h-3 rounded bg-gray-100">
-                <div id="methods-scrollbar-inner" class="h-3"></div>
+              <div id="database-scrollbar" class="overflow-x-auto h-3 rounded bg-gray-100">
+                <div id="database-scrollbar-inner" class="h-3"></div>
               </div>
             </div>
 
@@ -420,6 +420,12 @@
                     <tbody id="methods-table-body" class="bg-white divide-y divide-gray-200">
 </tbody>
                 </table>
+            </div>
+            <!-- External horizontal scrollbar (above pagination) -->
+            <div class="mt-4">
+                <div id="methods-scrollbar" class="overflow-x-auto h-3 rounded bg-gray-100">
+                <div id="methods-scrollbar-inner" class="h-3"></div>
+                </div>
             </div>
 
             <div class="flex justify-between items-center mt-6">
@@ -807,7 +813,9 @@
           DB_VIEW = DB_ALL.filter(item => {
             const hay = `${item.name} ${item.year} ${item.type} ${item.source}`.toLowerCase();
             const hit = searchTerm === '' || hay.includes(searchTerm);
-            const typeOk = (filterValue === 'all') || (String(item.type).trim() === filterValue);
+            // const typeOk = (filterValue === 'all') || (String(item.type).trim() === filterValue);
+            const typeOk = (filterValue === 'all') ||
+            String(item.type || '').toLowerCase().includes(String(filterValue).toLowerCase());
             return hit && typeOk;
           });
 
@@ -848,16 +856,24 @@
           applyDatabaseFilters(false);
         }
 
+        // function badgeClassByType(type) {
+        //   // 复用你原来的配色风格
+        //   const t = String(type).trim();
+        //   if (t === 'Experimental Data') return 'bg-blue-100 text-blue-800';
+        //   if (t === 'Integrated Data') return 'bg-green-100 text-green-800';
+        //   if (t === 'Computational Simulation Data') return 'bg-red-100 text-red-800';
+        //   return 'bg-gray-100 text-gray-800';
+        // }
         function badgeClassByType(type) {
-          // 复用你原来的配色风格
-          const t = String(type).trim();
-          if (t === 'Experimental Data') return 'bg-blue-100 text-blue-800';
-          if (t === 'Integrated Data') return 'bg-green-100 text-green-800';
-          if (t === 'Structural Data') return 'bg-purple-100 text-purple-800';
-          if (t === 'Hexapeptide Data') return 'bg-yellow-100 text-yellow-800';
-          if (t === 'Computational Simulation Data') return 'bg-red-100 text-red-800';
-          return 'bg-gray-100 text-gray-800';
+            const t = String(type || '').toLowerCase();
+
+            if (t.includes('experimental')) return 'bg-blue-100 text-blue-800';
+            if (t.includes('integrated')) return 'bg-green-100 text-green-800';
+            if (t.includes('predict')) return 'bg-cyan-100 text-cyan-800';
+
+            return 'bg-gray-100 text-gray-800';
         }
+
 
         function renderDatabaseTable() {
           const tbody = document.getElementById('database-table-body');
@@ -903,6 +919,8 @@
             `;
             tbody.appendChild(tr);
           });
+          syncDatabaseScrollbar();
+
 
           // 更新分页显示
           document.getElementById('database-start').textContent = total === 0 ? '0' : String(startIdx + 1);
@@ -929,11 +947,17 @@
           return escapeHtml(s).replaceAll('`', '&#96;');
         }
 
-        // 页面加载后执行
-        document.addEventListener('DOMContentLoaded', function() {
-          loadDatabases();
-          loadMethods();
+        // // 页面加载后执行
+        // document.addEventListener('DOMContentLoaded', function() {
+        //   loadDatabases();
+        //   loadMethods();
+        // });
+        document.addEventListener('DOMContentLoaded', () => {
+            loadDatabases();
+            loadMethods();
+            initCharts();
         });
+
 
                 /***********************
          * Methods (JSON-driven)
@@ -1098,8 +1122,9 @@
               </td>
             `;
             tbody.appendChild(tr);
-            syncMethodsScrollbar();
+            
           });
+          syncMethodsScrollbar();
 
           // 更新分页显示
           document.getElementById('methods-start').textContent = total === 0 ? '0' : String(startIdx + 1);
@@ -1113,198 +1138,95 @@
           if (nextEl) nextEl.disabled = (mPage >= totalPages);
         }
 
-        /* 如果你在 Database 代码里已经有这俩函数，可以删掉下面重复定义 */
-        function escapeHtml(s) {
-          return String(s)
-            .replaceAll('&', '&amp;')
-            .replaceAll('<', '&lt;')
-            .replaceAll('>', '&gt;')
-            .replaceAll('"', '&quot;')
-            .replaceAll("'", '&#39;');
-        }
-        function escapeAttr(s) {
-          return escapeHtml(s).replaceAll('`', '&#96;');
-        }
+        // /* 如果你在 Database 代码里已经有这俩函数，可以删掉下面重复定义 */
+        // function escapeHtml(s) {
+        //   return String(s)
+        //     .replaceAll('&', '&amp;')
+        //     .replaceAll('<', '&lt;')
+        //     .replaceAll('>', '&gt;')
+        //     .replaceAll('"', '&quot;')
+        //     .replaceAll("'", '&#39;');
+        // }
+        // function escapeAttr(s) {
+        //   return escapeHtml(s).replaceAll('`', '&#96;');
+        // }
 
 
-        // Charts
-        document.addEventListener('DOMContentLoaded', function() {
+        function initCharts() {
             // Year Chart
-            const yearCtx = document.getElementById('yearChart').getContext('2d');
-            const yearChart = new Chart(yearCtx, {
+            const yearCanvas = document.getElementById('yearChart');
+            if (yearCanvas) {
+                const yearCtx = yearCanvas.getContext('2d');
+                new Chart(yearCtx, {
                 type: 'bar',
                 data: {
                     labels: ['2015-2019', '2020', '2021', '2022', '2023', '2024', '2025'],
                     datasets: [{
-                        label: 'Number of Published Papers',
-                        data: [12, 18, 25, 32, 45, 56, 42],
-                        backgroundColor: '#1a56db',
-                        borderColor: '#1e429f',
-                        borderWidth: 1,
-                        borderRadius: 6,
-                        barThickness: 30
+                    label: 'Number of Published Papers',
+                    data: [12, 18, 25, 32, 45, 56, 42],
+                    backgroundColor: '#1a56db',
+                    borderColor: '#1e429f',
+                    borderWidth: 1,
+                    borderRadius: 6,
+                    barThickness: 30
                     }]
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: {
-                            display: true,
-                            position: 'top',
-                            labels: {
-                                font: {
-                                    family: 'Inter',
-                                    size: 14
-                                }
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            titleColor: '#1a56db',
-                            bodyColor: '#2d3748',
-                            borderColor: '#e2e8f0',
-                            borderWidth: 1,
-                            padding: 12,
-                            boxPadding: 6,
-                            usePointStyle: true,
-                            callbacks: {
-                                label: function(context) {
-                                    return `Number of published papers: ${context.parsed.y}`;
-                                }
-                            }
-                        }
+                    legend: { display: true, position: 'top' },
+                    tooltip: { padding: 12 }
                     },
                     scales: {
-                        y: {
-                            beginAtZero: true,
-                            grid: {
-                                color: 'rgba(0, 0, 0, 0.05)'
-                            },
-                            ticks: {
-                                font: {
-                                    family: 'Inter'
-                                }
-                            }
-                        },
-                        x: {
-                            grid: {
-                                display: false
-                            },
-                            ticks: {
-                                font: {
-                                    family: 'Inter'
-                                }
-                            }
-                        }
+                    y: { beginAtZero: true },
+                    x: { grid: { display: false } }
                     }
                 }
-            });
-            
+                });
+            }
+
             // Method Chart
-            const methodCtx = document.getElementById('methodChart').getContext('2d');
-            const methodChart = new Chart(methodCtx, {
+            const methodCanvas = document.getElementById('methodChart');
+            if (methodCanvas) {
+                const methodCtx = methodCanvas.getContext('2d');
+                new Chart(methodCtx, {
                 type: 'pie',
                 data: {
                     labels: ['Deep Learning', 'Random Forest', 'Support Vector Machine', 'Logistic Regression', 'Other Machine Learning Methods'],
                     datasets: [{
-                        data: [35, 25, 20, 15, 5],
-                        backgroundColor: [
-                            '#1a56db',
-                            '#0694a2',
-                            '#3f83f8',
-                            '#76a9fa',
-                            '#c4ddff'
-                        ],
-                        borderWidth: 2,
-                        borderColor: '#ffffff'
+                    data: [35, 25, 20, 15, 5],
+                    backgroundColor: ['#1a56db', '#0694a2', '#3f83f8', '#76a9fa', '#c4ddff'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                font: {
-                                    family: 'Inter',
-                                    size: 14
-                                },
-                                padding: 20
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            titleColor: '#1a56db',
-                            bodyColor: '#2d3748',
-                            borderColor: '#e2e8f0',
-                            borderWidth: 1,
-                            padding: 12,
-                            boxPadding: 6,
-                            usePointStyle: true,
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: ${context.parsed}%`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-            
-            // Application Chart (New)
-            const applicationCtx = document.getElementById('applicationChart').getContext('2d');
-            const applicationChart = new Chart(applicationCtx, {
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+                });
+            }
+
+            // Application Chart
+            const appCanvas = document.getElementById('applicationChart');
+            if (appCanvas) {
+                const applicationCtx = appCanvas.getContext('2d');
+                new Chart(applicationCtx, {
                 type: 'doughnut',
                 data: {
                     labels: ['Alzheimer’s Disease', 'Parkinson’s Disease', 'Huntington’s Disease', 'Amyloidosis', 'Other Diseases'],
                     datasets: [{
-                        data: [40, 25, 15, 12, 8],
-                        backgroundColor: [
-                            '#ef4444',
-                            '#f97316',
-                            '#eab308',
-                            '#22c55e',
-                            '#8b5cf6'
-                        ],
-                        borderWidth: 2,
-                        borderColor: '#ffffff'
+                    data: [40, 25, 15, 12, 8],
+                    backgroundColor: ['#ef4444', '#f97316', '#eab308', '#22c55e', '#8b5cf6'],
+                    borderWidth: 2,
+                    borderColor: '#ffffff'
                     }]
                 },
-                options: {
-                    responsive: true,
-                    maintainAspectRatio: false,
-                    plugins: {
-                        legend: {
-                            position: 'right',
-                            labels: {
-                                font: {
-                                    family: 'Inter',
-                                    size: 14
-                                },
-                                padding: 20
-                            }
-                        },
-                        tooltip: {
-                            backgroundColor: 'rgba(255, 255, 255, 0.9)',
-                            titleColor: '#1a56db',
-                            bodyColor: '#2d3748',
-                            borderColor: '#e2e8f0',
-                            borderWidth: 1,
-                            padding: 12,
-                            boxPadding: 6,
-                            usePointStyle: true,
-                            callbacks: {
-                                label: function(context) {
-                                    return `${context.label}: ${context.parsed}%`;
-                                }
-                            }
-                        }
-                    }
-                }
-            });
-        });
+                options: { responsive: true, maintainAspectRatio: false, plugins: { legend: { position: 'right' } } }
+                });
+            }
+        }
+
+
+        
 
         // Smooth Scrolling for Anchor Links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1340,40 +1262,48 @@
         });
 
         
-        function syncMethodsScrollbar() {
-          const tableScroll = document.getElementById('methods-table-scroll');
-          const bar = document.getElementById('methods-scrollbar');
-          const barInner = document.getElementById('methods-scrollbar-inner');
-        
-          if (!tableScroll || !bar || !barInner) return;
-        
-          // 让外置滚动条的“内容宽度”= 表格实际滚动宽度
-          const updateWidth = () => {
+        // --- External horizontal scrollbar sync (Database + Methods) ---
+        const scrollbarState = {
+        methods: { inited: false },
+        database: { inited: false },
+        };
+
+        function syncScrollbar(prefix) {
+        const tableScroll = document.getElementById(`${prefix}-table-scroll`);
+        const bar = document.getElementById(`${prefix}-scrollbar`);
+        const barInner = document.getElementById(`${prefix}-scrollbar-inner`);
+        if (!tableScroll || !bar || !barInner) return;
+
+        const updateWidth = () => {
             barInner.style.width = tableScroll.scrollWidth + 'px';
-          };
-        
-          updateWidth();
-          window.addEventListener('resize', updateWidth);
-        
-          // table -> bar
-          tableScroll.addEventListener('scroll', () => {
+        };
+        updateWidth();
+
+        if (!scrollbarState[prefix].inited) {
+            scrollbarState[prefix].inited = true;
+
+            window.addEventListener('resize', updateWidth);
+
+            // table -> bar
+            tableScroll.addEventListener('scroll', () => {
             bar.scrollLeft = tableScroll.scrollLeft;
-          });
-        
-          // bar -> table
-          bar.addEventListener('scroll', () => {
+            });
+
+            // bar -> table
+            bar.addEventListener('scroll', () => {
             tableScroll.scrollLeft = bar.scrollLeft;
-          });
+            });
         }
-        
-        // 在 DOMReady 后调用（你已经有 DOMContentLoaded，可直接加进去）
-        document.addEventListener('DOMContentLoaded', () => {
-          syncMethodsScrollbar();
-        });
+        }
+
+        // convenience wrappers (optional)
+        function syncMethodsScrollbar() { syncScrollbar('methods'); }
+        function syncDatabaseScrollbar() { syncScrollbar('database'); }
 
     </script>
 </body>
 </html>
+
 
 
 
