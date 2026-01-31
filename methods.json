@@ -2,38 +2,38 @@
   {
     "year": "2026",
     "method": "AggrescanAI",
-    "dataset_used": "",
-    "model_algorithm": "Deep Learning,",
-    "tool_url": "https://gitlab.com/bioinformatics-fil/aggrescanai",
-    "github_url": "",
+    "dataset_used": "CPAD 2.0",
+    "model_algorithm": "Deep Learning",
+    "tool_url": "https://colab.research.google.com/github/alvaro-2/aggrescanai/blob/main/aggrescanai.ipynb",
+    "github_url": "https://gitlab.com/bioinformatics-fil/aggrescanai",
     "reference_name": "https://doi.org/10.1016/j.jmb.2026.169643",
     "reference_url": "https://doi.org/10.1016/j.jmb.2026.169643"
   },
   {
     "year": "2025",
     "method": "FA-Amy",
-    "dataset_used": "",
-    "model_algorithm": "Deep Learning, ESMC",
+    "dataset_used": "Amy dataset",
+    "model_algorithm": "Deep Learning",
     "tool_url": "http://www.bioai-lab.com/FA-Amy",
-    "github_url": "",
+    "github_url": "https://github.com/FRDMercury/FA-AMY",
     "reference_name": "https://doi.org/10.1016/j.ijbiomac.2025.149267",
     "reference_url": "https://doi.org/10.1016/j.ijbiomac.2025.149267"
   },
   {
     "year": "2025",
     "method": "CANYA",
-    "dataset_used": "",
+    "dataset_used": "GSE268261",
     "model_algorithm": "Deep Learning",
-    "tool_url": "",
+    "tool_url": "-",
     "github_url": "https://github.com/lehner-lab/canya",
     "reference_name": "https://www.science.org/doi/10.1126/sciadv.adt5111",
     "reference_url": "https://www.science.org/doi/10.1126/sciadv.adt5111"
   },
   {
     "year": "2025",
-    "method": "Cross-Beta DB",
-    "dataset_used": "",
-    "model_algorithm": "Machine learning, Database",
+    "method": "Cross-Beta Predictor",
+    "dataset_used": "Cross-Beta DB",
+    "model_algorithm": "Machine learning",
     "tool_url": "https://bioinfo.crbm.cnrs.fr/index.php?route=tools&tool=35",
     "github_url": "https://github.com/Valentin-Gonay/cross-beta-predictor",
     "reference_name": "https://doi.org/10.1002/alz.14510",
@@ -42,7 +42,7 @@
   {
     "year": "2025",
     "method": "Ab-Amy 2.0",
-    "dataset_used": "",
+    "dataset_used": "AL-base; The published work by David et al.",
     "model_algorithm": "PLM,SVM",
     "tool_url": "http://i.uestc.edu.cn/AB-Amy2",
     "github_url": "https://github.com/zzyywww/ABAmy2",
@@ -52,8 +52,8 @@
   {
     "year": "2024",
     "method": "AggreProt",
-    "dataset_used": "",
-    "model_algorithm": "",
+    "dataset_used": "Waltz-DB;AmyPro",
+    "model_algorithm": "DNN",
     "tool_url": "https://loschmidt.chemi.muni.cz/aggreprot/",
     "github_url": "https://github.com/loschmidt/aggreprot-predictor?tab=readme-ov-file",
     "reference_name": "https://doi.org/10.1093/nar/gkae420",
@@ -62,8 +62,8 @@
   {
     "year": "2024",
     "method": "CORDAX web server",
-    "dataset_used": "",
-    "model_algorithm": "Logistic regression",
+    "dataset_used": "WALTZ-DB",
+    "model_algorithm": "Cordax;Logistic regression",
     "tool_url": "https://cordax.switchlab.org/",
     "github_url": "",
     "reference_name": "https://doi.org/10.1093/bioinformatics/btae279",
@@ -72,7 +72,7 @@
   {
     "year": "2024",
     "method": "AMYGNN",
-    "dataset_used": "",
+    "dataset_used": "CPAD 2.0",
     "model_algorithm": "Deep Learning",
     "tool_url": "",
     "github_url": "https://github.com/yzjizwz/AMYGNN.git",
@@ -82,7 +82,7 @@
   {
     "year": "2023",
     "method": "Amy_Fuse",
-    "dataset_used": "",
+    "dataset_used": "AmyPro",
     "model_algorithm": "Machine learning",
     "tool_url": "",
     "github_url": "",
@@ -91,28 +91,28 @@
   },
   {
     "year": "2023",
-    "method": "",
-    "dataset_used": "",
+    "method": "Prediction of Protein Aggregation Propensity via Data-Driven Approaches",
+    "dataset_used": "PDB; A3D; CPAD",
     "model_algorithm": "Deep Learning",
-    "tool_url": "",
-    "github_url": "",
+    "tool_url": "10.6084/m9.figshare.22492606.v1",
+    "github_url": "https://github.com/alstjs0528/Aggregation",
     "reference_name": "https://pubs.acs.org/doi/10.1021/acsbiomaterials.3c01001",
     "reference_url": "https://pubs.acs.org/doi/10.1021/acsbiomaterials.3c01001"
   },
   {
     "year": "2023",
     "method": "AggBERT",
-    "dataset_used": "",
+    "dataset_used": "WALTZ-DB 2.0",
     "model_algorithm": "Machine learning,LLM",
     "tool_url": "",
-    "github_url": "",
+    "github_url": "https://github.com/ejplab/EJPLab_Computational_Projects/tree/master/AmyloidPrediction/",
     "reference_name": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c00817",
     "reference_url": "https://pubs.acs.org/doi/10.1021/acs.jcim.3c00817"
   },
   {
     "year": "2023",
     "method": "AB-Amy",
-    "dataset_used": "",
+    "dataset_used": "AL-base; The published work by David et al.",
     "model_algorithm": "SVG",
     "tool_url": "http://i.uestc.edu.cn/AB-Amy/",
     "github_url": "",
@@ -122,7 +122,7 @@
   {
     "year": "2023",
     "method": "ECAmyloid",
-    "dataset_used": "",
+    "dataset_used": "AmyPro",
     "model_algorithm": "Machine learning",
     "tool_url": "",
     "github_url": "https://github.com/KOALA-L/ECAmyloid.git",
@@ -135,14 +135,14 @@
     "dataset_used": "http://pmlabstack.pythonanywhere.com/AMYPred-FRL",
     "model_algorithm": "Machine learning",
     "tool_url": "http://pmlabstack.pythonanywhere.com/AMYPred-FRL",
-    "github_url": "",
+    "github_url": "https://github.com/saeed344/AMYPred-FRL",
     "reference_name": "https://www.nature.com/articles/s41598-022-11897-z",
     "reference_url": "https://www.nature.com/articles/s41598-022-11897-z"
   },
   {
     "year": "2020",
     "method": "ANuPP",
-    "dataset_used": "",
+    "dataset_used": "Databases such as CPAD, WALTZ-DB, and AmyPro",
     "model_algorithm": "Machine learning",
     "tool_url": "https://web.iitm.ac.in/bioinfo2/ANuPP/",
     "github_url": "",
@@ -390,6 +390,7 @@
     "reference_url": "https://doi.org/10.1016/0022-2836(82)90515-0"
   }
 ]
+
 
 
 
