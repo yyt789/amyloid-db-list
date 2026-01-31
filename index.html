@@ -317,6 +317,12 @@
 </tbody>
                 </table>
             </div>
+            <!-- External horizontal scrollbar (above pagination) -->
+            <div class="mt-4">
+              <div id="methods-scrollbar" class="overflow-x-auto h-3 rounded bg-gray-100">
+                <div id="methods-scrollbar-inner" class="h-3"></div>
+              </div>
+            </div>
 
             <div class="flex justify-between items-center mt-6">
                 <div class="text-sm text-gray-500">
@@ -1092,6 +1098,7 @@
               </td>
             `;
             tbody.appendChild(tr);
+            syncMethodsScrollbar();
           });
 
           // 更新分页显示
@@ -1331,9 +1338,43 @@
                 header.classList.remove('shadow-lg');
             }
         });
+
+        
+        function syncMethodsScrollbar() {
+          const tableScroll = document.getElementById('methods-table-scroll');
+          const bar = document.getElementById('methods-scrollbar');
+          const barInner = document.getElementById('methods-scrollbar-inner');
+        
+          if (!tableScroll || !bar || !barInner) return;
+        
+          // 让外置滚动条的“内容宽度”= 表格实际滚动宽度
+          const updateWidth = () => {
+            barInner.style.width = tableScroll.scrollWidth + 'px';
+          };
+        
+          updateWidth();
+          window.addEventListener('resize', updateWidth);
+        
+          // table -> bar
+          tableScroll.addEventListener('scroll', () => {
+            bar.scrollLeft = tableScroll.scrollLeft;
+          });
+        
+          // bar -> table
+          bar.addEventListener('scroll', () => {
+            tableScroll.scrollLeft = bar.scrollLeft;
+          });
+        }
+        
+        // 在 DOMReady 后调用（你已经有 DOMContentLoaded，可直接加进去）
+        document.addEventListener('DOMContentLoaded', () => {
+          syncMethodsScrollbar();
+        });
+
     </script>
 </body>
 </html>
+
 
 
 
