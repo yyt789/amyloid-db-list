@@ -381,11 +381,11 @@
   },
   {
     "year": "1982",
-    "method": "",
-    "dataset_used": "",
-    "model_algorithm": "",
-    "tool_url": "",
-    "github_url": "",
+    "method": "A simple method for displaying the hydropathic character of a protein",
+    "dataset_used": "-",
+    "model_algorithm": "-",
+    "tool_url": "-",
+    "github_url": "-",
     "reference_name": "https://doi.org/10.1016/0022-2836(82)90515-0",
     "reference_url": "https://doi.org/10.1016/0022-2836(82)90515-0"
   },
@@ -400,6 +400,7 @@
     "reference_url": ""
   }
 ]
+
 
 
 
